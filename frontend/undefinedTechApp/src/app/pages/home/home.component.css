@@ -1,0 +1,11 @@
+.img-thumbnail{
+    max-block-size: 200px;
+}
+
+.card-img-top{
+    max-block-size: 100px;
+    max-width: fit-content;    
+}
+.container{
+    margin-top: 30px !important;
+}

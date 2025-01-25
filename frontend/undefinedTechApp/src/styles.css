@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --global-font-size: 16px;
+}
+
+body {
+    font-size: var(--global-font-size);
+    line-height: 1.5;
+}
+
+p, span, li, th, td {
+    font-size: var(--global-font-size); /* Asegúrate de incluir todos los elementos que contienen texto */
+  }
+
+a, a:visited, a:active, a:hover, a:focus {
+    font-size: var(--global-font-size) !important;
+    text-decoration: inherit; /* Opcional: heredar decoración de texto */
+}
+
+
+body h2, body h3, body h4, body h5, body h6 {
+    font-size: var(--global-font-size) !important;
+}
