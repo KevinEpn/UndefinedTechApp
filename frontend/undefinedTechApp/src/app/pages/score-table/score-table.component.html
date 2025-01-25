@@ -1,1 +1,31 @@
-<p>score-table works!</p>
+<div class="container">
+    <h1>TABLA DE RESULTADOS</h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Tiempo</th>
+        <th scope="col">
+          <button type="button" class="btn" (click)="sortByScore()">
+            Puntuación
+            <span>{{ sortScoreAscending ? '▲' : '▼' }}</span>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (score of scoreList; track $index) {
+        <tr>
+          <th scope="row">{{$index + 1}}</th>
+          <td>{{score.name}}</td>
+          <td>{{score.date | date: 'dd/MM/yyyy'}}</td>
+          <td>{{score.time}}</td>
+          <td>{{score.score}}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
@@ -12,6 +13,14 @@ const scoreRoutes = require('./routes/score.routes');
 // Express para los middlewares
 const app = express();
 app.use(bodyParser.json());
+
+// Habilitar CORS
+app.use(cors({
+    origin: 'http://localhost:4200', // Permitir solicitudes desde este dominio
+    methods: ['GET','POST','PUT','DELETE'], // Métodos que se permiten
+    allowedHeaders: ['Content-Type', 'Authorization'] // Cabeceras permitidas
+}));
+
 
 // Conexión de la BD
 connectDB();
