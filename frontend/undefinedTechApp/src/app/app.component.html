@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="" [ngClass]="{active: menuOption == 'home'}" (click)="onOption('home')">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="level1" [ngClass]="{active: menuOption == 'level1'}" (click)="onOption('level1')">Level 1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="level2" [ngClass]="{active: menuOption == 'level2'}" (click)="onOption('level2')">Level 2</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="level3" [ngClass]="{active: menuOption == 'level3'}" (click)="onOption('level3')">Level 3</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="scoretable" [ngClass]="{active: menuOption == 'scoretable'}" (click)="onOption('scoretable')">Tabla de Resultados</a>
+        </li>
+        
+      </ul>
+      <!-- <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+    </div>
+  </div>
+</nav>
+
+<router-outlet />
