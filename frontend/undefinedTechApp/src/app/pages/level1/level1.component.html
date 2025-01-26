@@ -1,1 +1,75 @@
-<p>level1 works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relieves del Ecuador</title>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Temporizador -->
+        <div id="header">
+            <div id="timer">
+                <span id="time">00:00</span>
+            </div>
+            <button id="help-button">Ayuda</button>
+        </div>
+
+        <!-- Título y descripción -->
+        <div id="game-title">
+            <h1>1 - Relieves del Ecuador</h1>
+            <p>Une el concepto con la imagen</p>
+        </div>
+
+        <!-- Área de juego -->
+        <div id="game-area">
+            <div class="pair">
+                <div class="draggable" id="cuenca-hidrografica" draggable="true">Cuenca hidrográfica</div>
+                <div class="dropzone" id="drop-cuenca"></div>
+                <img src="./assets/Laguna.jpg" alt="Cuenca hidrográfica">
+            </div>
+            <div class="pair">
+                <div class="draggable" id="laguna" draggable="true">Laguna</div>
+                <div class="dropzone" id="drop-laguna"></div>
+                <img src="./assets/Nevado.jpg" alt="Laguna">
+            </div>
+            <div class="pair">
+                <div class="draggable" id="nevado" draggable="true">Nevado</div>
+                <div class="dropzone" id="drop-nevado"></div>
+                <img src="./assets/Agua_como_recurso.jpg" alt="Nevado">
+            </div>
+            <div class="pair">
+                <div class="draggable" id="agua-recurso" draggable="true">Agua como recurso</div>
+                <div class="dropzone" id="drop-agua"></div>
+                <img src="./assets/Cuenca_hidrografica.jpg" alt="Agua como recurso">
+            </div>
+        </div>
+
+        <!-- Botón de menú -->
+        <div id="menu-container">
+            <button id="menu-button">Menú</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- 
+Encabezado y temporizador:
+
+header: Contenedor del temporizador y botón de ayuda.
+timer: Contenedor del temporizador.
+time: Span que mostrará el tiempo restante.
+help-button: Botón de ayuda.
+Título:
+
+game-title: Contenedor del título y subtítulo.
+Zona de juego:
+
+game-area: Contenedor principal de los pares de texto e imágenes.
+Cada par tiene:
+Un elemento arrastrable (draggable) con un ID único: cuenca-hidrografica, laguna, nevado, agua-recurso.
+Una zona para soltar (dropzone) con IDs: drop-cuenca, drop-laguna, drop-nevado, drop-agua.
+Botón de menú:
+
+menu-container: Contenedor del botón.
+menu-button: Botón para volver al menú. -->

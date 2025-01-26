@@ -1,1 +1,70 @@
-<p>level3 works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regiones del Ecuador</title>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Encabezado con temporizador y botón de ayuda -->
+        <div id="header">
+            <div id="timer">
+                <span id="time">00:00</span>
+            </div>
+            <button id="help-button">Ayuda</button>
+        </div>
+
+        <!-- Título y descripción -->
+        <div id="game-title">
+            <h1>3 - Regiones del Ecuador</h1>
+            <p>Seleccione dos provincias de la Costa Ecuatoriana</p>
+        </div>
+
+        <!-- Zona de selección -->
+        <div id="selection-area">
+            <div class="option" id="option-guayas">
+                <button class="province-button">Guayas</button>
+                <img src="./assets/Guayas.jpg" alt="Imagen de Guayas">
+            </div>
+            <div class="option" id="option-orellana">
+                <button class="province-button">Orellana</button>
+                <img src="./assets/Orellana.jpg" alt="Imagen de Orellana">
+            </div>
+            <div class="option" id="option-el-oro">
+                <button class="province-button">El Oro</button>
+                <img src="./assets/El_oro.jpg" alt="Imagen de El Oro">
+            </div>
+            <div class="option" id="option-napo">
+                <button class="province-button">Napo</button>
+                <img src="./assets/Napo.jpg" alt="Imagen de Napo">
+            </div>
+        </div>
+
+        <!-- Botón de menú -->
+        <div id="menu-container">
+            <button id="menu-button">Menú</button>
+        </div>
+    </div>
+</body>
+</html>
+<!-- Encabezado:
+
+header: Contenedor del temporizador y botón de ayuda.
+timer: Contenedor del temporizador.
+time: Span para mostrar el tiempo.
+help-button: Botón de ayuda.
+Título:
+
+game-title: Contenedor del título y subtítulo.
+Zona de selección:
+
+selection-area: Contenedor principal de las opciones.
+Cada opción tiene:
+Un botón con la clase province-button.
+Un identificador único para cada opción como option-guayas, option-orellana, etc.
+Una imagen con una ruta específica (deberás ajustar las imágenes: guayas.png, orellana.png, etc.).
+Botón de menú:
+
+menu-container: Contenedor del botón.
+menu-button: Botón para regresar al menú. -->

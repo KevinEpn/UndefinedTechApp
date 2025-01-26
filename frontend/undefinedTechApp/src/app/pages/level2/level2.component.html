@@ -1,1 +1,70 @@
-<p>level2 works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relieves del Ecuador</title>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Encabezado con temporizador y botón de ayuda -->
+        <div id="header">
+            <div id="timer">
+                <span id="time">00:00</span>
+            </div>
+            <button id="help-button">Ayuda</button>
+        </div>
+
+        <!-- Título y descripción -->
+        <div id="game-title">
+            <h1>1 - Relieves del Ecuador</h1>
+            <p>Selecciona elementos que predominan en el paisaje de los Andes o Sierra.</p>
+        </div>
+
+        <!-- Imágenes para seleccionar -->
+        <div id="image-selection">
+            <div class="selectable-image" id="image-tarde-soleada-quito">
+                <img src="./assets/tarde_soleada_quito.jpg" alt="Tarde soleada en Quito">
+            </div>
+            <div class="selectable-image" id="image-paisaje-tipico-del-llano">
+                <img src="./assets/paisaje_tipico_del_llano.jpg" alt="Paisaje típico del llano">
+            </div>
+            <div class="selectable-image" id="image-zona-ubicada-en-ibarra">
+                <img src="./assets/zona_ubicada_en_ibarra.jpg" alt="Zona ubicada en Ibarra">
+            </div>
+            <div class="selectable-image" id="image-centro-de-una-capital">
+                <img src="./assets/centro_de_una_capital.jpg" alt="Centro de una capital">
+            </div>
+            <div class="selectable-image" id="image-nevado">
+                <img src="./assets/nevado.jpg" alt="Nevado">
+            </div>
+        </div>
+
+        <!-- Botones de menú y reinicio -->
+        <div id="menu-container">
+            <button id="menu-button">Menú</button>
+            <button id="restart-button">Reiniciar</button>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- Encabezado:
+
+header: Contenedor del temporizador y botón de ayuda.
+timer: Contenedor del temporizador.
+time: Span para mostrar el tiempo restante.
+help-button: Botón de ayuda.
+Título:
+
+game-title: Contenedor del título y subtítulo.
+Zona de selección de imágenes:
+
+image-selection: Contenedor para las imágenes seleccionables.
+Cada imagen está dentro de un div con clase selectable-image y un ID único como image-1, image-2, etc.
+Las imágenes deben llamarse image1.png, image2.png, etc., y ubicarse en el mismo directorio que este archivo HTML, o ajustar las rutas según corresponda.
+Botones:
+
+menu-container: Contenedor para los botones.
+menu-button: Botón para regresar al menú.
+restart-button: Botón para reiniciar el juego. -->
