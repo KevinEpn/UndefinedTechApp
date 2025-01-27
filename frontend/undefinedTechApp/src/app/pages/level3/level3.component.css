@@ -1,0 +1,167 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor principal del juego */
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+/* Estilos del encabezado */
+#header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#timer-container {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+/* Botón de ayuda en un renglón nuevo, alineado a la derecha */
+#help-container {
+    width: 100%;
+    text-align: right;
+    margin-top: 10px;
+}
+
+#help-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #72A156;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#help-button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos del título y la descripción */
+#game-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#game-title h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#game-title p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* Zona de selección de provincias */
+#selection-area {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente las columnas */
+    align-items: center;    /* Centra verticalmente las columnas si hay más espacio disponible */
+    gap: 20px;              /* Espaciado entre las columnas */
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;         /* Asegura que el contenedor esté centrado respecto a la página */
+}
+
+/* Columna para los botones de provincia */
+.province-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 40%;
+}
+
+/* Columna para las imágenes */
+.province-images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 40%;
+}
+
+/* Estilo común para las opciones (botones y imágenes) */
+.option {
+    text-align: center;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #28a745; /* Color de fondo verde para toda la opción */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.option:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    
+}
+
+/* Botón de provincia */
+.province-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #28a745; /* Fondo verde para el botón */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    
+}
+
+.province-button:hover {
+    background-color: #218838;
+}
+
+/* Estilo para las imágenes */
+.option img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Estilos del botón del menú */
+#menu-container {
+    margin-top: auto;
+    margin-bottom: 20px;
+    transform: translate(-50%, -50%);
+}
+
+#menu-button {
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: #72A156;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#menu-button:hover {
+    background-color: #71b848;
+}

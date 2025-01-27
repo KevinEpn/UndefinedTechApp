@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relieves del Ecuador</title>
+    <link rel="stylesheet" href="level1.component.css">
 </head>
 <body>
-    <div id="game-container">
-        <!-- Temporizador -->
+    <div class="container">
+        <!-- Encabezado con temporizador centrado y botón de ayuda a la derecha -->
         <div id="header">
             <div id="timer">
                 <span id="time">00:00</span>
             </div>
+        </div>
+        <div id="help-container">
             <button id="help-button">Ayuda</button>
         </div>
 
@@ -21,27 +24,27 @@
             <p>Une el concepto con la imagen</p>
         </div>
 
-        <!-- Área de juego -->
+        <!-- Área de juego en formato de tabla -->
         <div id="game-area">
-            <div class="pair">
-                <div class="draggable" id="cuenca-hidrografica" draggable="true">Cuenca hidrográfica</div>
-                <div class="dropzone" id="drop-cuenca"></div>
-                <img src="./assets/Laguna.jpg" alt="Cuenca hidrográfica">
+            <div class="row">
+                <div class="cell option">Cuenca hidrográfica</div>
+                <div class="cell dropzone" id="drop-cuenca"></div>
+                <div class="cell"><img src="./assets/Cuenca_hidrografica.jpg" alt="Cuenca hidrográfica"></div>
             </div>
-            <div class="pair">
-                <div class="draggable" id="laguna" draggable="true">Laguna</div>
-                <div class="dropzone" id="drop-laguna"></div>
-                <img src="./assets/Nevado.jpg" alt="Laguna">
+            <div class="row">
+                <div class="cell option">Laguna</div>
+                <div class="cell dropzone" id="drop-laguna"></div>
+                <div class="cell"><img src="./assets/Laguna.jpg" alt="Laguna"></div>
             </div>
-            <div class="pair">
-                <div class="draggable" id="nevado" draggable="true">Nevado</div>
-                <div class="dropzone" id="drop-nevado"></div>
-                <img src="./assets/Agua_como_recurso.jpg" alt="Nevado">
+            <div class="row">
+                <div class="cell option">Nevado</div>
+                <div class="cell dropzone" id="drop-nevado"></div>
+                <div class="cell"><img src="./assets/Nevado.jpg" alt="Nevado"></div>
             </div>
-            <div class="pair">
-                <div class="draggable" id="agua-recurso" draggable="true">Agua como recurso</div>
-                <div class="dropzone" id="drop-agua"></div>
-                <img src="./assets/Cuenca_hidrografica.jpg" alt="Agua como recurso">
+            <div class="row">
+                <div class="cell option">Agua como recurso</div>
+                <div class="cell dropzone" id="drop-agua"></div>
+                <div class="cell"><img src="./assets/Agua_como_recurso.jpg" alt="Agua como recurso"></div>
             </div>
         </div>
 
