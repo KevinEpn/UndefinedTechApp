@@ -1,73 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol
+    id="bi-sliders"
+    viewBox="0 0 16 16"
+    width="20"
+    height="20"
+    fill="currentColor"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"
+    />
+  </symbol>
+</svg>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">UT-APP</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Barra de navegación"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" routerLink="" [ngClass]="{active: menuOption == 'home'}" (click)="onOption('home')">Home</a>
+          <a
+            class="nav-link"
+            routerLink=""
+            [ngClass]="{ active: menuOption == 'home' }"
+            (click)="onOption('home')"
+            >Home</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="level1" [ngClass]="{active: menuOption == 'level1'}" (click)="onOption('level1')">Nivel 1</a>
+          <a
+            class="nav-link"
+            routerLink="level1"
+            [ngClass]="{ active: menuOption == 'level1' }"
+            (click)="onOption('level1')"
+            >Nivel 1</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="level2" [ngClass]="{active: menuOption == 'level2'}" (click)="onOption('level2')">Nivel 2</a>
+          <a
+            class="nav-link"
+            routerLink="level2"
+            [ngClass]="{ active: menuOption == 'level2' }"
+            (click)="onOption('level2')"
+            >Nivel 2</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="level3" [ngClass]="{active: menuOption == 'level3'}" (click)="onOption('level3')">Nivel 3</a>
+          <a
+            class="nav-link"
+            routerLink="level3"
+            [ngClass]="{ active: menuOption == 'level3' }"
+            (click)="onOption('level3')"
+            >Nivel 3</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="scoretable" [ngClass]="{active: menuOption == 'scoretable'}" (click)="onOption('scoretable')">Tabla de Resultados</a>
-        </li>        
+          <a
+            class="nav-link"
+            routerLink="scoretable"
+            [ngClass]="{ active: menuOption == 'scoretable' }"
+            (click)="onOption('scoretable')"
+            >Tabla de Resultados</a
+          >
+        </li>
       </ul>
-      
+
       <!-- Static backdrop -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Configuración
-      </button>    
+      <button
+        type="button"
+        class="btn btn-info d-flex align-items-center"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+      >
+        <svg
+          class="bi flex-shrink-0 me-2 icon-alert"
+          role="img"
+          aria-label="slider:"
+        >
+          <use xlink:href="#bi-sliders" />
+        </svg>
+        <p>Configuración</p>
+      </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel"> Configuración</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                Configuración
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
             <div class="modal-body">
               <div class="mb-3">
-                <label for="fontSizeControl" class="form-label">Tamaño de Fuente</label>
-                <div class="d-flex justify-content-between">
+                <label for="fontSizeControl" class="form-label"
+                  >Tamaño de Fuente</label
+                >
+                <div 
+                class="d-flex justify-content-between"
+                >
                   <span>{{ fontSizeMin }}px</span>
                   <span>{{ fontSize }}px (Actual)</span>
                   <span>{{ fontSizeMax }}px</span>
                 </div>
                 <input
-                  type="range" 
-                  id="=fontSizeControl" 
+                  type="range"
+                  id="=fontSizeControl"
                   class="form-range"
                   [(ngModel)]="fontSize"
                   [min]="fontSizeMin"
                   [max]="fontSizeMax"
-                >
+                  aria-valuemin="10" 
+                  aria-valuemax="30"
+                />
               </div>
               <p>Vista Previa:</p>
-              <p [style.fontSize.px]="fontSize" >Este es un texto de prueba!</p>
+              <p [style.fontSize.px]="fontSize">Este es un texto de prueba!</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" (click)="applyGlobalFontSize()">Save changes</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cerrar
+              </button>
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="applyGlobalFontSize()"
+              >
+                Guardar Cambios
+              </button>
             </div>
           </div>
-        </div>                
+        </div>
       </div>
-
-
-
-       
-      
     </div>
   </div>
 </nav>

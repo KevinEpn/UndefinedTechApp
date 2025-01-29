@@ -18,6 +18,7 @@ a, a:visited, a:active, a:hover, a:focus {
 }
 
 
-body h2, body h3, body h4, body h5, body h6 {
+body h3, body h4, body h5, body h6 {
     font-size: var(--global-font-size) !important;
 }
+

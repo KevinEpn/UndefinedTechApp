@@ -1,70 +1,61 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regiones del Ecuador</title>
-</head>
-<body>
-    <div id="game-container">
-        <!-- Encabezado con temporizador y botón de ayuda -->
-        <div id="header">
-            <div id="timer">
-                <span id="time">00:00</span>
-            </div>
-            <button id="help-button">Ayuda</button>
-        </div>
-
-        <!-- Título y descripción -->
-        <div id="game-title">
-            <h1>3 - Regiones del Ecuador</h1>
-            <p>Seleccione dos provincias de la Costa Ecuatoriana</p>
-        </div>
-
-        <!-- Zona de selección -->
-        <div id="selection-area">
-            <div class="option" id="option-guayas">
-                <button class="province-button">Guayas</button>
-                <img src="./assets/Guayas.jpg" alt="Imagen de Guayas">
-            </div>
-            <div class="option" id="option-orellana">
-                <button class="province-button">Orellana</button>
-                <img src="./assets/Orellana.jpg" alt="Imagen de Orellana">
-            </div>
-            <div class="option" id="option-el-oro">
-                <button class="province-button">El Oro</button>
-                <img src="./assets/El_oro.jpg" alt="Imagen de El Oro">
-            </div>
-            <div class="option" id="option-napo">
-                <button class="province-button">Napo</button>
-                <img src="./assets/Napo.jpg" alt="Imagen de Napo">
-            </div>
-        </div>
-
-        <!-- Botón de menú -->
-        <div id="menu-container">
-            <button id="menu-button">Menú</button>
-        </div>
+<div class="video-thumbnail-container">
+  <!-- Thumbnail del video -->
+  <div class="thumbnail" (click)="abrirModal()">
+    <iframe
+      width="200"
+      height="113"
+      src="https://www.youtube.com/embed/yfsbzbTYJLY?si=ctjlBtx7I9PytvYC&cc_load_policy=1&cc_lang_pref=es&autoplay=0"
+      title="YouTube video player thumbnail"
+      frameborder="0"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe>
+    <div class="overlay">
+      <button class="btn btn-primary">Ver</button>
     </div>
-</body>
-</html>
-<!-- Encabezado:
+  </div>
 
-header: Contenedor del temporizador y botón de ayuda.
-timer: Contenedor del temporizador.
-time: Span para mostrar el tiempo.
-help-button: Botón de ayuda.
-Título:
+  
 
-game-title: Contenedor del título y subtítulo.
-Zona de selección:
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="videoModal"
+    tabindex="-1"
+    aria-labelledby="videoModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="videoModalLabel">Reproductor</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Cerrar"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <iframe
+            id="videoPlayer"
+            width="100%"
+            height="400"
+            src="https://www.youtube.com/embed/yfsbzbTYJLY?si=ctjlBtx7I9PytvYC&cc_load_policy=1&cc_lang_pref=es&autoplay=1"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-selection-area: Contenedor principal de las opciones.
-Cada opción tiene:
-Un botón con la clase province-button.
-Un identificador único para cada opción como option-guayas, option-orellana, etc.
-Una imagen con una ruta específica (deberás ajustar las imágenes: guayas.png, orellana.png, etc.).
-Botón de menú:
-
-menu-container: Contenedor del botón.
-menu-button: Botón para regresar al menú. -->
+<div>
+    <button class="btn btn-primary">Ver</button>
+  </div>
+  

@@ -5,3 +5,15 @@
 .modal-body {
     color:white;
 }
+
+.icon-alert {
+    max-width: 20px;
+    max-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    margin-bottom: 0px;
+}
