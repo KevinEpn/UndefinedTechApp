@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .alert-warning {
     max-block-size: 50%;
     max-width: fit-content;
@@ -72,3 +73,156 @@ p {
     position: relative; /* Establece un contexto para sus hijos */
     z-index: 1; /* Evita quedar bajo el overlay */
   }
+=======
+/* Estilo base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #c6f5c6; /* Fondo verde claro */
+}
+
+/* Contenedor principal */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Encabezado con temporizador centrado */
+#header {
+    
+    display: flex;
+    justify-content: center; /* Centrar el temporizador */
+    padding: 10px;
+    background-color: #72A156; /* Verde vibrante */
+    color: white;
+    margin-bottom: 10px;
+}
+
+#timer {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Contenedor del botón de ayuda */
+#help-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Colocar el botón de ayuda en la derecha */
+    margin-top: -10px; /* Ajuste para que no se distinga entre el temporizador */
+}
+
+/* Botón de ayuda */
+#help-button {
+    background-color: #72A156; 
+    color: #000;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Título */
+#game-title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#game-title h1 {
+    font-size: 2.5rem;
+    color: #000;
+    text-transform: uppercase;
+}
+
+#game-title p {
+    font-size: 1rem;
+    color: #888;
+}
+
+/* Área de juego como tabla */
+#game-area {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.cell {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #4caf50; /* Verde vibrante */
+    border-radius: 5px;
+    height: 100px; /* Establece una altura uniforme para todos los cuadros */
+    min-width: 120px; /* Establece un ancho mínimo para los cuadros */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    font-size: 1.2rem; /* Tamaño de fuente */
+    box-sizing: border-box;
+}
+
+/* Estilo para las opciones */
+.option {
+    font-size: 1.2rem;
+    background-color: #4caf50;
+    color: white;
+    cursor: move;
+    padding: 10px;
+}
+
+/* Estilo para las zonas de drop */
+.dropzone {
+    background-color: #f4f4f9;
+    height: 100px; /* Hacemos que la altura de las zonas de drop coincida con los cuadros de las opciones */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #4caf50; /* Verde vibrante */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    max-width: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Botón de menú */
+#menu-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#menu-button {
+    background-color: #72A156; /* Verde vibrante */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+#menu-button:hover {
+    background-color: #388e3c; /* Verde más oscuro al pasar el mouse */
+}
+>>>>>>> b760d6e73beb344f261bcbbb25e82c20e9a1ba32

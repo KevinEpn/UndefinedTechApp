@@ -1,14 +1,125 @@
-.img-thumbnail{
-    max-block-size: 200px;
+/* General */
+body {
+    background-color: #c6f5c6; /* Fondo verde claro */
+    font-family: "Comic Sans MS", Arial, sans-serif; /* Fuentes amigables para niños */
+    margin: 0;
+    padding: 0;
+    color: #000;
 }
 
-.card-img-top{
-    max-block-size: 100px;
-    max-width: fit-content;    
+/* Título principal */
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 20px 0;
+    color: #000;
+    text-transform: uppercase;
 }
+<<<<<<< HEAD
 .container{
     margin-top: 30px !important;
     background-color: #c6f5c6; /* Fondo verde claro */
     padding-top: 30px;
     padding-bottom: 30px;
 }
+=======
+
+/* Contenedor principal */
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Contenedor de niveles */
+.niveles {
+    display: flex;
+    justify-content: space-around; /* Distribuir las tarjetas de manera uniforme */
+    gap: 20px; /* Espacio entre las tarjetas */
+    margin: 20px 0;
+    flex-wrap: wrap; /* Las tarjetas se moverán a la siguiente línea en pantallas pequeñas */
+}
+
+/* Estilos para cada nivel */
+.nivel {
+    background-color: #4caf50; /* Verde vibrante */
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    padding: 30px; /* Aumenté el padding para más espacio dentro de las tarjetas */
+    text-align: center;
+    width: 100%; /* Se ajusta al 100% en pantallas pequeñas */
+    max-width: 300px; /* Tamaño máximo en pantallas grandes */
+    margin: 10px; /* Separación entre las tarjetas */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar los elementos */
+    justify-content: space-between; /* Asegurarse de que los elementos dentro de la tarjeta estén bien distribuidos */
+}
+
+.nivel:hover {
+    transform: translateY(-5px); /* Animación sutil al pasar el mouse */
+}
+
+.nivel img {
+    width: 60px; /* Aumenté el tamaño de las estrellas */
+    height: 60px;
+    margin-bottom: 15px; /* Aumenté el espacio entre la imagen y el texto */
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1rem;
+    margin-bottom: 20px; /* Aumenté el espacio entre la descripción y el botón */
+}
+
+/* Botones de niveles */
+.btn-primary {
+    background-color: #DBFFC6; /* Amarillo vibrante */
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 12px 25px; /* Ajusté el padding para que el botón sea más grande */
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #fdd835;
+    color: #000;
+}
+
+/* Configuración */
+.configuracion {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; /* Centrar el botón de configuración */
+    gap: 8px;
+    font-size: 1.2rem;
+}
+
+.configuracion a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .niveles {
+        flex-direction: column; /* Disposición en columna en pantallas pequeñas */
+        align-items: center; /* Centrar las tarjetas */
+    }
+    .nivel {
+        width: 80%; /* Las tarjetas ocupan más espacio en pantallas pequeñas */
+        max-width: none;
+    }
+}
+
+>>>>>>> b760d6e73beb344f261bcbbb25e82c20e9a1ba32

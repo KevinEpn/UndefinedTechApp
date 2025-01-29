@@ -1,4 +1,5 @@
 <div class="container">
+<<<<<<< HEAD
     
     
     <div class="text-center">
@@ -40,4 +41,40 @@
               </div>
             </div>       
     </div>    
+=======
+  <link rel="stylesheet" href="home.component.css">
+
+  <h1 class="text-center">HUMANOS EN EL ESPACIO</h1>
+  
+  <div class="text-center">
+      <img src="../../../assets/Ecuador-map.png" class="img-thumbnail" alt="Ecuador map" width: "200px" height="200px">
+  </div>
+
+  <!-- Contenedor de las tarjetas -->
+  <div class="niveles">
+      <div class="nivel">
+          <img src="../../../assets/star-rating-1.png" class="card-img-top mx-auto p-2" alt="Card image 1">
+          <h4 class="card-title">NIVEL 1</h4>
+          <p class="card-text">Descripción nivel 1.</p>
+          <a class="btn btn-primary" routerLink="level1" [ngClass]="{active: menuOption == 'level1'}" (click)="onOption('level1')">Iniciar Nivel 1</a>
+      </div>
+      <div class="nivel">
+          <img src="../../../assets/star-rating-3.png" class="card-img-top mx-auto p-2" alt="Card image 2">
+          <h4 class="card-title">NIVEL 2</h4>
+          <p class="card-text">Descripción nivel 2.</p>
+          <a class="btn btn-primary" routerLink="level2" [ngClass]="{active: menuOption == 'level2'}" (click)="onOption('level2')">Iniciar Nivel 2</a>
+      </div>
+      <div class="nivel">
+          <img src="../../../assets/star-rating-5.png" class="card-img-top mx-auto p-2" alt="Card image 3">
+          <h4 class="card-title">NIVEL 3</h4>
+          <p class="card-text">Descripción nivel 3.</p>
+          <a class="btn btn-primary" routerLink="level3" [ngClass]="{active: menuOption == 'level3'}" (click)="onOption('level3')">Iniciar Nivel 3</a>
+      </div>
+  </div>
+
+  <!-- Botón de configuración debajo de las tarjetas -->
+  <div class="configuracion">
+      <a href="#" class="btn btn-primary">Configuración</a>
+  </div>
+>>>>>>> b760d6e73beb344f261bcbbb25e82c20e9a1ba32
 </div>
