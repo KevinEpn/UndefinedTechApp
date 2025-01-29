@@ -185,28 +185,28 @@
     <div class="offcanvas-body text-center justify-content-center">
       <div class="video-thumbnail-container">
         <div
-        class="thumbail"
-        role="button"
-        tabindex="0"
-        aria-label="Abrir video sobre cuencas hidrograficas"
-        (click)="abrirModalVideo()"
-        (keydown)="manejarTeclado($event)"
-      >
-        <iframe
-          width="fill"
-          height="fill"
-          src="https://www.youtube.com/embed/8ajxqtQLRoM?si=d_GG6Nnpypdqwh3E&amp;controls=0&cc_load_policy=1&cc_lang_pref=es"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
+          class="thumbail"
+          role="button"
+          tabindex="0"
+          aria-label="Abrir video sobre cuencas hidrograficas"
+          (click)="abrirModalVideo()"
+          (keydown)="manejarTeclado($event)"
         >
-        </iframe>
-        <div class="overlay">
-          <button class="btn btn-primary">Saber más</button>
+          <iframe
+            width="fill"
+            height="fill"
+            src="https://www.youtube.com/embed/8ajxqtQLRoM?si=d_GG6Nnpypdqwh3E&amp;controls=0&cc_load_policy=1&cc_lang_pref=es"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          >
+          </iframe>
+          <div class="overlay">
+            <button class="btn btn-primary">Saber más</button>
+          </div>
         </div>
-      </div>
       </div>
 
       <div class="alert alert-warning" role="alert" style="max-width: 100%">
@@ -230,14 +230,14 @@
         </ul>
 
         <button
-        *ngIf="!isTimerStarted"
-        class="btn btn-info"
-        data-bs-dismiss="offcanvas"
-        (click)="startTimer()"
-      >
-        Comenzar
-      </button>
-      </div>     
+          *ngIf="!isTimerStarted"
+          class="btn btn-info"
+          data-bs-dismiss="offcanvas"
+          (click)="startTimer()"
+        >
+          <p>Comenzar</p>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -282,8 +282,6 @@
   <!-- Fin Modal Video -->
   <!-- Fin offCanvas Principal -->
 
-  
-
   <!-- Título y descripción -->
   <div class="text-center">
     <div class="alert alert-info" role="alert" tabindex="0">
@@ -291,35 +289,46 @@
     </div>
   </div>
 
+  <!-- Fin titulo y descripción -->
+
   <!-- Área de juego -->
   <div class="d-flex justify-content-center">
     <div
       class="row row-cols-1 row-cols-md-2 g-3 text-center w-50 d-flex justify-content-center align-items-center"
     >
+      <!-- Card 1 -->
       <div class="col">
         <div
           *ngIf="!droppedItems.has('Objeto 1')"
           class="card h-100 draggable-item bg-body-secondary"
-          draggable="true"
+          [attr.draggable]="isTimerStarted ? 'true' : 'false'"
           aria-grabbed="false"
           tabindex="0"
-          (dragstart)="onDragStart($event, 'Objeto 1')"
+          (dragstart)="isTimerStarted ? onDragStart($event, 'Objeto 1') : null"
         >
           <div class="card-body">
             <p class="card-text text-center">CUENCA HIDROGRÁFICA</p>
           </div>
         </div>
       </div>
+      <!-- fin Card 1 -->
+
+      <!-- Card 2 -->
       <div class="col">
         <div
           class="card h-100 drop-zone"
+          role="region"
+          aria-dropeffect="move"
+          tabindex="0"
+          aria-labelledby="zona-laguna"
           (dragover)="onDragOver($event)"
           (drop)="onDrop($event, 'Objeto 2')"
         >
-          <div class="card-body">
+          <div class="card-body image-container">
             <img
               src="../../../assets/laguna-cuicocha.jpg"
               class="card-img-top"
+              draggable="false"
               alt="Laguna de Cuicocha"
             />
             <ng-container *ngIf="droppedItems.has('Objeto 2')">
@@ -332,28 +341,41 @@
           </div>
         </div>
       </div>
+      <!-- Fin Card 2 -->
+
+      <!-- Card 3 -->
       <div class="col">
         <div
           *ngIf="!droppedItems.has('Objeto 2')"
           class="card h-100 draggable-item bg-body-secondary"
-          draggable="true"
-          (dragstart)="onDragStart($event, 'Objeto 2')"
+          [attr.draggable]="isTimerStarted ? 'true' : 'false'"
+          aria-grabbed="false"
+          tabindex="0"
+          (dragstart)="isTimerStarted ? onDragStart($event, 'Objeto 2') : null"
         >
           <div class="card-body">
-            <p class="card-text">LAGUNA</p>
+            <p class="card-text text-center">LAGUNA</p>
           </div>
         </div>
       </div>
+      <!-- Fin Card 3 -->
+
+      <!-- Card 4 -->
       <div class="col">
         <div
           class="card h-100 drop-zone"
+          role="region"
+          aria-dropeffect="move"
+          aria-labelledby="zona-laguna"
+          tabindex="0"
           (dragover)="onDragOver($event)"
           (drop)="onDrop($event, 'Objeto 3')"
         >
-          <div class="card-body">
+          <div class="card-body image-container">
             <img
               src="../../../assets/cotopaxi.jpg"
               class="card-img-top"
+              draggable="false"
               alt="Volcán Cotopaxi"
             />
             <ng-container *ngIf="droppedItems.has('Objeto 3')">
@@ -366,28 +388,41 @@
           </div>
         </div>
       </div>
+      <!-- Fin Card 4 -->
+
+      <!-- Card 5 -->
       <div class="col">
         <div
           *ngIf="!droppedItems.has('Objeto 3')"
           class="card h-100 draggable-item bg-body-secondary"
-          draggable="true"
-          (dragstart)="onDragStart($event, 'Objeto 3')"
+          [attr.draggable]="isTimerStarted ? 'true' : 'false'"
+          aria-grabbed="false"
+          tabindex="0"
+          (dragstart)="isTimerStarted ? onDragStart($event, 'Objeto 3') : null"
         >
           <div class="card-body">
-            <p class="card-text">NEVADO</p>
+            <p class="card-text text-center">NEVADO</p>
           </div>
         </div>
       </div>
+      <!-- Fin Card 5 -->
+
+      <!-- Card 6 -->
       <div class="col">
         <div
           class="card h-100 drop-zone"
+          role="region"
+          aria-dropeffect="move"
+          tabindex="0"
+          aria-labelledby="zona-laguna"
           (dragover)="onDragOver($event)"
           (drop)="onDrop($event, 'Objeto 4')"
         >
-          <div class="card-body">
+          <div class="card-body image-container">
             <img
               src="../../../assets/hidroelectrica.jpg"
               class="card-img-top"
+              draggable="false"
               alt="hidroeléctrica Mazar"
             />
             <ng-container *ngIf="droppedItems.has('Objeto 4')">
@@ -400,18 +435,26 @@
           </div>
         </div>
       </div>
+      <!-- Fin Card 6 -->
+
+      <!-- Card 7 -->
       <div class="col">
         <div
           *ngIf="!droppedItems.has('Objeto 4')"
           class="card h-100 draggable-item bg-body-secondary"
-          draggable="true"
-          (dragstart)="onDragStart($event, 'Objeto 4')"
+          [attr.draggable]="isTimerStarted ? 'true' : 'false'"
+          aria-grabbed="false"
+          tabindex="0"
+          (dragstart)="isTimerStarted ? onDragStart($event, 'Objeto 4') : null"
         >
           <div class="card-body">
-            <p class="card-text">AGUA COMO RECURSO</p>
+            <p class="card-text text-center">AGUA COMO RECURSO</p>
           </div>
         </div>
       </div>
+      <!-- Fin Card 7 -->
+
+      <!-- Card 8 -->
       <div class="col">
         <div
           class="card h-100 drop-zone"
@@ -426,6 +469,7 @@
             <img
               src="../../../assets/cuenca-río-guayas.png"
               class="card-img-top"
+              draggable="false"
               alt="Cuenca del Rio Guayas"
             />
             <ng-container *ngIf="droppedItems.has('Objeto 1')">
@@ -438,6 +482,8 @@
           </div>
         </div>
       </div>
+      <!-- Fin Card 8 -->
+       
     </div>
   </div>
   <!-- Fin área de juego -->

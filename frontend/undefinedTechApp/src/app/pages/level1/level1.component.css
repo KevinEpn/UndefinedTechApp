@@ -4,7 +4,7 @@
 }
 
 .alert-success {
-    max-width: fit-content;
+    max-width: 100%;
 }
 
 .icon-alert {
@@ -32,6 +32,18 @@ p {
     /* Ajusta el tamaño de la imagen */
     height: auto;
 }
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado del texto */
+    border-radius: 10px; /* Bordes redondeados */
+    text-align: center;
+  }
 
 .video-thumbnail-container {
     position: relative;

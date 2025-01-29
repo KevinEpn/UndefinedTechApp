@@ -72,7 +72,7 @@ export class Level1Component implements OnInit, OnDestroy {
   }
 
   onDragStart(event: DragEvent, itemName: string) {
-    if (event.dataTransfer) {
+    if (event.dataTransfer && this.isTimerStarted) {
       event.dataTransfer.setData('text/plain', itemName);
       event.dataTransfer.effectAllowed = 'move';
     }

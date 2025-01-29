@@ -1,35 +1,261 @@
-<div class="video-thumbnail-container">
-  <!-- Thumbnail del video -->
-  <div class="thumbnail" (click)="abrirModal()">
-    <iframe
-      width="200"
-      height="113"
-      src="https://www.youtube.com/embed/yfsbzbTYJLY?si=ctjlBtx7I9PytvYC&cc_load_policy=1&cc_lang_pref=es&autoplay=0"
-      title="YouTube video player thumbnail"
-      frameborder="0"
-      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen
-    ></iframe>
-    <div class="overlay">
-      <button class="btn btn-primary">Ver</button>
+<div class="container">
+   <!-- Iconos -->
+   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol
+      id="exclamation-triangle-fill"
+      viewBox="0 0 16 16"
+      width="30"
+      height="30"
+      fill="currentColor"
+    >
+      <path
+        d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+      />
+    </symbol>
+    <symbol
+      id="hourglass-bottom"
+      viewBox="0 0 16 16"
+      width="30"
+      height="30"
+      fill="currentColor"
+    >
+      <path
+        d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1-.5-.5m2.5.5v1a3.5 3.5 0 0 0 1.989 3.158c.533.256 1.011.791 1.011 1.491v.702s.18.149.5.149.5-.15.5-.15v-.7c0-.701.478-1.236 1.011-1.492A3.5 3.5 0 0 0 11.5 3V2z"
+      />
+    </symbol>
+    <symbol
+      id="info-circle-fill"
+      viewBox="0 0 16 16"
+      width="30"
+      height="30"
+      fill="currentColor"
+    >
+      <path
+        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"
+      />
+    </symbol>
+    <symbol
+      id="bi-arrow-counterclockwise"
+      viewBox="0 0 16 16"
+      width="30"
+      height="30"
+      fill="currentColor"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"
+      />
+      <path
+        d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"
+      />
+    </symbol>
+  </svg>
+  <!-- Fin Iconos -->
+
+  <!-- Temporizador -->
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="alert alert-warning d-flex align-items-center" tabindex="0">
+      <svg
+        class="bi flex-shrink-0 me-2 icon-alert"
+        role="img"
+        aria-hidden="true"
+      >
+        <use xlink:href="#hourglass-bottom" />
+      </svg>
+      <div>
+        <p>
+          Tiempo transcurrido:
+          <strong id="time" aria-live="off">{{ formattedTime }}</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- Fin Temporizador -->
+
+  <!-- Inicio Titulo - Botones Ayuda y Reinciar -->
+  <div class="d-flex justify-content-center align-items-center">
+    <h1 class="me-5" tabindex="0">3 - Regiones del Ecuador</h1>
+    <button
+      *ngIf="!isTimerStarted"
+      class="btn btn-info d-flex align-items-center me-5"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasScrolling"
+      aria-controls="offcanvasScrolling"
+    >
+      <svg
+        class="bi flex-shrink-0 me-2 icon-alert"
+        role="img"
+        aria-label="info:"
+        aria-hidden="true"
+      >
+        <use xlink:href="#info-circle-fill" />
+      </svg>
+      <div>
+        <p>Ayuda</p>
+      </div>
+    </button>
+
+    <button
+      *ngIf="isTimerStarted"
+      class="btn btn-info d-flex align-items-center me-5"
+      type="button"
+      data-bs-toggle="offcanvas"
+      (click)="toggleOffCanvas()"
+      aria-controls="offcanvasScrolling"
+    >
+      <svg
+        class="bi flex-shrink-0 me-2 icon-alert"
+        role="img"
+        aria-label="info:"
+        aria-hidden="true"
+      >
+        <use xlink:href="#info-circle-fill" />
+      </svg>
+      <div>
+        <p>Ayuda</p>
+      </div>
+    </button>
+
+    <button
+      *ngIf="!isTimerStarted"
+      class="btn btn-warning d-flex align-items-center"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasScrolling"
+      aria-controls="offcanvasScrolling"
+    >
+      <svg
+        class="bi flex-shrink-0 me-2 icon-alert"
+        role="img"
+        aria-label="arrow-counter:"
+        aria-hidden="true"
+      >
+        <use xlink:href="#bi-arrow-counterclockwise" />
+      </svg>
+      <div>
+        <p>Reiniciar</p>
+      </div>
+    </button>
+
+    <button
+      *ngIf="isTimerStarted"
+      class="btn btn-warning d-flex align-items-center"
+      type="button"
+      data-bs-toggle="offcanvas"
+      (click)="restartAll()"
+      aria-controls="offcanvasScrolling"
+    >
+      <svg
+        class="bi flex-shrink-0 me-2 icon-alert"
+        role="img"
+        aria-label="arrow-counter:"
+        aria-hidden="true"
+      >
+        <use xlink:href="#bi-arrow-counterclockwise" />
+      </svg>
+      <div>
+        <p>Reiniciar</p>
+      </div>
+    </button>
+  </div>
+  <!-- Fin Titulo - Botones Ayuda y Reinciar -->
+
+  <!-- Incio offCanvas principal -->
+  <div
+    class="offcanvas offcanvas-start"
+    data-bs-scroll="true"
+    data-bs-backdrop="static"
+    tabindex="-1"
+    id="offcanvasScrolling"
+    aria-labelledby="offcanvasScrollingLabel"
+  >
+    <div class="offcanvas-header text-center justify-content-center">
+      <h2 class="offcanvas-title" id="offcanvasScrollingLabel">
+        Arrastra y coloca
+      </h2>
+      <button
+        *ngIf="isTimerStarted"
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body text-center justify-content-center">
+      <div class="video-thumbnail-container">
+        <div
+        class="thumbail"
+        role="button"
+        tabindex="0"
+        aria-label="Abrir video sobre cuencas hidrograficas"
+        (click)="abrirModalVideo()"
+        (keydown)="manejarTeclado($event)"
+      >
+        <iframe
+          width="fill"
+          height="fill"
+          src="https://www.youtube.com/embed/8ajxqtQLRoM?si=d_GG6Nnpypdqwh3E&amp;controls=0&cc_load_policy=1&cc_lang_pref=es"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        >
+        </iframe>
+        <div class="overlay">
+          <button class="btn btn-primary">Saber más</button>
+        </div>
+      </div>
+      </div>
+
+      <div class="alert alert-warning" role="alert" style="max-width: 100%">
+        <p>
+          Arrastra los objetos al lugar correcto según las pistas
+          proporcionadas. Esta actividad evalúa tus habilidades de observación y
+          lógica.
+        </p>
+      </div>
+      <div class="alert alert-info" role="alert" style="max-width: 100%">
+        <h6>INSTRUCCIONES</h6>
+        <ol>
+          <li>Selecciona un objeto y mantén presionado para arrastrarlo.</li>
+          <li>Muévelo hasta la posición correcta.</li>
+          <li>Suelta el objeto para colocarlo.</li>
+        </ol>
+        <h6>CONSEJOS</h6>
+        <ul>
+          <li>Revisa las imágenes antes de comenzar.</li>
+          <li>Si te equivocas, lee con atención la sugerencia.</li>
+        </ul>
+
+        <button
+        *ngIf="!isTimerStarted"
+        class="btn btn-info"
+        data-bs-dismiss="offcanvas"
+        (click)="startTimer()"
+      >
+        Comenzar
+      </button>
+      </div>     
     </div>
   </div>
 
-  
-
-  <!-- Modal -->
+  <!-- Incio Modal Video -->
   <div
     class="modal fade"
     id="videoModal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
     tabindex="-1"
     aria-labelledby="videoModalLabel"
     aria-hidden="true"
+    role="dialog"
   >
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="videoModalLabel">Reproductor</h5>
+          <h1 class="modal-title fs-5" id="videoModalLabel">Saber más</h1>
           <button
             type="button"
             class="btn-close"
@@ -42,7 +268,7 @@
             id="videoPlayer"
             width="100%"
             height="400"
-            src="https://www.youtube.com/embed/yfsbzbTYJLY?si=ctjlBtx7I9PytvYC&cc_load_policy=1&cc_lang_pref=es&autoplay=1"
+            src="https://www.youtube.com/embed/8ajxqtQLRoM?si=d_GG6Nnpypdqwh3E&cc_load_policy=1&cc_lang_pref=es&autoplay=0"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -53,9 +279,7 @@
       </div>
     </div>
   </div>
+  <!-- Fin Modal Video -->
+  <!-- Fin offCanvas Principal -->
+    
 </div>
-
-<div>
-    <button class="btn btn-primary">Ver</button>
-  </div>
-  
