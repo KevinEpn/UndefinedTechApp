@@ -338,7 +338,7 @@
           tabindex="0"
           [class.disabled]="!isTimerStarted"
           (click)="
-            isTimerStarted && !allCorrectSelected && handleCardClick(1, 'info')
+            isTimerStarted && !allCorrectSelected && handleCardClick(1, 'warning')
           "
           (keydown)="onKeyPress($event, 1, 'info')"
           [attr.aria-disabled]="!isTimerStarted"
