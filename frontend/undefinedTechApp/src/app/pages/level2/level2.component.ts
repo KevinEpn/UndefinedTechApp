@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 
 
 declare var bootstrap: any;
@@ -29,6 +29,11 @@ export class Level2Component implements OnInit, OnDestroy {
   puntuacion: number | null = null;
   completedMessage: string | null = null;
 
+  private videoPlayer: HTMLIFrameElement | null = null;
+  private modalElement: HTMLElement | null = null;
+  
+
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
 
   ngOnInit(): void {
     this.restartAll();
@@ -129,6 +134,53 @@ export class Level2Component implements OnInit, OnDestroy {
     }
   }
 
+  abrirModalVideo() {
+    // Obtén el elemento del modal
+    const modalElement = document.getElementById('videoModal');
+    if (modalElement) {
+      // Inicializa y muestra el modal
+      const modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    }
+  }
+
+  ngAfterViewInit(): void {
+    // Encuentra el modal y el iframe usando ElementRef
+    this.modalElement = this.elementRef.nativeElement.querySelector('#videoModal');
+    this.videoPlayer = this.elementRef.nativeElement.querySelector('#videoPlayer');
+
+    if (this.modalElement) {
+      // Escucha el evento 'hidden.bs.modal' de Bootstrap
+      this.renderer.listen(this.modalElement, 'hidden.bs.modal', () => {
+        this.detenerVideo();
+      });
+    }
+  }
+
+  private detenerVideo(): void {
+    if (this.videoPlayer) {
+      // Reinicia el src del iframe para detener el video
+      this.videoPlayer.src = this.videoPlayer.src;
+    }
+  }
+
+  manejarTeclado(event: KeyboardEvent): void {
+    // Si se presiona Enter o Espacio, abre el modal
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault(); // Evita el comportamiento predeterminado (como scroll al presionar Espacio)
+      this.abrirModalVideo();
+    }
+  }
+
+  onKeyPress(event: KeyboardEvent, id: number, type: string): void {
+    if (!this.isTimerStarted || this.allCorrectSelected) return; // No hacer nada si está deshabilitado
+    
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault(); // Evita el desplazamiento en la página con la tecla Espacio
+      this.handleCardClick(id, type as 'info' | 'warning');
+    }
+  }
+
   restartAll() {
     // Reiniciar el contador de tiempo
     this.elapsedTime = 0;
@@ -145,7 +197,7 @@ export class Level2Component implements OnInit, OnDestroy {
     this.stopTimer()
 
     if (typeof document !== 'undefined') {
-      this.showOffCanvas();     
+      this.showOffCanvas();
     }
   }
 }

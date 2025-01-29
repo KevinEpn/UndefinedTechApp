@@ -1,15 +1,20 @@
 <div class="container">
   <!-- Iconos -->
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check-circle-fill" viewBox="0 0 16 16">
+      <path
+        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+      />
+    </symbol>
     <symbol
-      id="exclamation-triangle-fill"
+      id="bi-exclamation-circle-fill"
       viewBox="0 0 16 16"
       width="30"
       height="30"
       fill="currentColor"
     >
       <path
-        d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2"
       />
     </symbol>
     <symbol
@@ -49,6 +54,17 @@
         d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"
       />
     </symbol>
+    <symbol
+      id="bi-play-fill"
+      viewBox="0 0 16 16"
+      width="30"
+      height="30"
+      fill="currentColor"
+    >
+      <path
+        d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"
+      />
+    </symbol>
   </svg>
   <!-- Fin Iconos -->
 
@@ -74,7 +90,9 @@
 
   <!-- Inicio Titulo - Botones Ayuda y Reinciar -->
   <div class="d-flex justify-content-center align-items-center">
-    <h1 class="me-5" tabindex="0">1 - Las cuencas y el agua</h1>
+    <h1 class="me-5" tabindex="0">
+      1 - 💦 Explorando el Agua y las Cuencas 💦
+    </h1>
     <button
       *ngIf="!isTimerStarted"
       class="btn btn-info d-flex align-items-center me-5"
@@ -131,10 +149,10 @@
         aria-label="arrow-counter:"
         aria-hidden="true"
       >
-        <use xlink:href="#bi-arrow-counterclockwise" />
+        <use xlink:href="#bi-play-fill" />
       </svg>
       <div>
-        <p>Reiniciar</p>
+        <p>Iniciar</p>
       </div>
     </button>
 
@@ -172,7 +190,7 @@
   >
     <div class="offcanvas-header text-center justify-content-center">
       <h2 class="offcanvas-title" id="offcanvasScrollingLabel">
-        Arrastra y coloca
+        💦 Explorando el Agua y las Cuencas 💦
       </h2>
       <button
         *ngIf="isTimerStarted"
@@ -211,24 +229,57 @@
 
       <div class="alert alert-warning" role="alert" style="max-width: 100%">
         <p>
-          Arrastra los objetos al lugar correcto según las pistas
-          proporcionadas. Esta actividad evalúa tus habilidades de observación y
-          lógica.
+          👋 ¡Hola, pequeño explorador! Hoy aprenderemos sobre el estudio del
+          agua en la naturaleza. Veremos ríos, lagunas, nevados y entenderemos
+          por qué el agua es un recurso muy importante.
         </p>
-      </div>
-      <div class="alert alert-info" role="alert" style="max-width: 100%">
-        <h6>INSTRUCCIONES</h6>
-        <ol>
-          <li>Selecciona un objeto y mantén presionado para arrastrarlo.</li>
-          <li>Muévelo hasta la posición correcta.</li>
-          <li>Suelta el objeto para colocarlo.</li>
-        </ol>
-        <h6>CONSEJOS</h6>
-        <ul>
-          <li>Revisa las imágenes antes de comenzar.</li>
-          <li>Si te equivocas, lee con atención la sugerencia.</li>
+        <hr />
+        <p>1️⃣ ¿Qué es la Hidrografía?</p>
+        <p>
+          La hidrografía estudia los ríos, lagos, lagunas, nevados y todos los
+          lugares donde hay agua en la naturaleza. El agua es esencial para la
+          vida de las personas, los animales y las plantas.
+        </p>
+        <p>🌊 ¿Dónde podemos encontrar agua en la naturaleza?</p>
+        <ul style="list-style-type: none">
+          <li>
+            ✅ Cuencas hidrográficas: Son los lugares donde nacen y se juntan
+            los ríos.
+          </li>
+          <li>
+            ✅ Ríos: Son corrientes de agua que recorren grandes distancias.
+          </li>
+          <li>
+            ✅ Lagunas y lagos: Son cuerpos de agua que no se mueven mucho y
+            pueden estar en montañas o valles.
+          </li>
+          <li>
+            ✅ Nevados: Son montañas cubiertas de nieve que al derretirse forman
+            ríos y lagunas.
+          </li>
         </ul>
+      </div>
 
+      <div class="alert alert-info" role="alert" style="max-width: 100%">
+        <p>2️⃣ Actividad: Une el concepto con la imagen</p>
+        <p>
+          📌 Instrucciones: Te mostraremos diferentes imágenes relacionadas con
+          el agua. Une cada imagen con su nombre correcto.
+        </p>
+        <p>🎯 Ejemplo:</p>
+        <ul style="list-style-type: none">
+          <li>
+            🔵 Si ves una imagen de un nevado ❄️🏔️, únelo con la palabra
+            "Nevado".
+          </li>
+          <li>🔵 Si ves un río 🌊, únelo con la palabra "Río".</li>
+        </ul>
+        <p>
+          💡 Consejo: Observa bien cada imagen y piensa en lo que aprendimos
+          sobre el agua en la naturaleza.
+        </p>
+        <p>🎉 ¡Diviértete y aprende jugando con el agua y las cuencas! 💦💙</p>
+        <hr />
         <button
           *ngIf="!isTimerStarted"
           class="btn btn-info"
@@ -240,6 +291,7 @@
       </div>
     </div>
   </div>
+  <!-- Fin offCanvas Principal -->
 
   <!-- Incio Modal Video -->
   <div
@@ -280,16 +332,15 @@
     </div>
   </div>
   <!-- Fin Modal Video -->
-  <!-- Fin offCanvas Principal -->
 
-  <!-- Título y descripción -->
+  <!-- Descripción -->
   <div class="text-center">
     <div class="alert alert-info" role="alert" tabindex="0">
       <p>UNE EL CONCEPTO CON LA IMAGEN</p>
     </div>
   </div>
 
-  <!-- Fin titulo y descripción -->
+  <!-- Fin Descripción -->
 
   <!-- Área de juego -->
   <div class="d-flex justify-content-center">
@@ -483,7 +534,6 @@
         </div>
       </div>
       <!-- Fin Card 8 -->
-       
     </div>
   </div>
   <!-- Fin área de juego -->
@@ -501,7 +551,20 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="errorModalLabel">Error!</h1>
+          <h4
+            class="modal-title fs-5 d-flex align-items-center justify-content-center"
+            id="errorModalLabel"
+          >
+            <svg
+              class="bi flex-shrink-0 me-2 icon-alert"
+              role="img"
+              aria-label="info:"
+              aria-hidden="true"
+            >
+              <use xlink:href="#bi-exclamation-circle-fill" />
+            </svg>
+            <p>¡Incorrecto!</p>
+          </h4>
           <button
             type="button"
             class="btn-close"

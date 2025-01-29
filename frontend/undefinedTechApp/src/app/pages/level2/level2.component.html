@@ -1,6 +1,5 @@
 <div class="container">
-  <!-- Encabezado con temporizador y botón de ayuda -->
-  <!-- Temporizador -->
+  <!-- Iconos -->
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check-circle-fill" viewBox="0 0 16 16">
       <path
@@ -8,14 +7,14 @@
       />
     </symbol>
     <symbol
-      id="exclamation-triangle-fill"
+      id="bi-exclamation-circle-fill"
       viewBox="0 0 16 16"
       width="30"
       height="30"
       fill="currentColor"
     >
       <path
-        d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2"
       />
     </symbol>
     <symbol
@@ -55,8 +54,21 @@
         d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"
       />
     </symbol>
+    <symbol
+      id="bi-play-fill"
+      viewBox="0 0 16 16"
+      width="30"
+      height="30"
+      fill="currentColor"
+    >
+      <path
+        d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"
+      />
+    </symbol>
   </svg>
+  <!-- Fin Iconos -->
 
+  <!-- Temporizador -->
   <div class="d-flex justify-content-center align-items-center">
     <div class="alert alert-warning d-flex align-items-center" role="alert">
       <svg
@@ -76,9 +88,9 @@
   </div>
   <!-- Fin Temporizador -->
 
-  <!-- Inicio botón ayuda -->
+  <!-- Inicio Titulo - Botones Ayuda y Reinciar -->
   <div class="d-flex justify-content-center align-items-center">
-    <h1 class="me-5">2 - Relieves del Ecuador</h1>
+    <h1 class="me-5">2 - 🌄 Explorando el Paisaje de los Andes 🌄</h1>
     <button
       *ngIf="!isTimerStarted"
       class="btn btn-info d-flex align-items-center me-5"
@@ -91,6 +103,7 @@
         class="bi flex-shrink-0 me-2 icon-alert"
         role="img"
         aria-label="info:"
+        aria-hidden="true"
       >
         <use xlink:href="#info-circle-fill" />
       </svg>
@@ -111,6 +124,7 @@
         class="bi flex-shrink-0 me-2 icon-alert"
         role="img"
         aria-label="info:"
+        aria-hidden="true"
       >
         <use xlink:href="#info-circle-fill" />
       </svg>
@@ -131,11 +145,12 @@
         class="bi flex-shrink-0 me-2 icon-alert"
         role="img"
         aria-label="arrow-counter:"
+        aria-hidden="true"
       >
-        <use xlink:href="#bi-arrow-counterclockwise" />
+        <use xlink:href="#bi-play-fill" />
       </svg>
       <div>
-        <p>Reiniciar</p>
+        <p>Iniciar</p>
       </div>
     </button>
 
@@ -151,6 +166,7 @@
         class="bi flex-shrink-0 me-2 icon-alert"
         role="img"
         aria-label="arrow-counter:"
+        aria-hidden="true"
       >
         <use xlink:href="#bi-arrow-counterclockwise" />
       </svg>
@@ -159,7 +175,9 @@
       </div>
     </button>
   </div>
+  <!-- Fin Titulo - Botones Ayuda y Reinciar -->
 
+  <!-- Inicio offCanvas principal -->
   <div
     class="offcanvas offcanvas-start"
     data-bs-scroll="true"
@@ -169,9 +187,9 @@
     aria-labelledby="offcanvasScrollingLabel"
   >
     <div class="offcanvas-header text-center justify-content-center">
-      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
-        <!-- TITULO OFF CANVAS AYUDA -->
-      </h5>
+      <h2 class="offcanvas-title" id="offcanvasScrollingLabel">
+        🌄 Explorando el Paisaje de los Andes 🌄
+      </h2>
       <button
         *ngIf="isTimerStarted"
         type="button"
@@ -181,41 +199,135 @@
       ></button>
     </div>
     <div class="offcanvas-body text-center justify-content-center">
-      <div class="alert alert-warning" role="alert" style="max-width: 100%">
-        Recuerda!
+      <div class="video-thumbnail-container">
+        <div
+          class="thumbail"
+          role="button"
+          tabindex="0"
+          aria-label="Abrir video sobre cuencas hidrograficas"
+          (click)="abrirModalVideo()"
+          (keydown)="manejarTeclado($event)"
+        >
+          <iframe
+            width="fill"
+            height="fill"
+            src="https://www.youtube.com/embed/MSdgdfOx_1U?si=KYt207UFrAi9qfKl&amp;controls=0&cc_load_policy=1&cc_lang_pref=es"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          >
+          </iframe>
+          <div class="overlay">
+            <button class="btn btn-primary">Saber más</button>
+          </div>
+        </div>
       </div>
-      <iframe
-        width="fill"
-        height="fill"
-        src="https://www.youtube.com/embed/MSdgdfOx_1U?si=KYt207UFrAi9qfKl&amp;controls=0"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
-      <p style="margin-bottom: 25px">Cambiar indicaciones</p>
-      <button
-        *ngIf="!isTimerStarted"
-        class="btn btn-info"
-        data-bs-dismiss="offcanvas"
-        (click)="startTimer()"
-      >
-        Comenzar
-      </button>
+
+      <div class="alert alert-warning" role="alert" style="max-width: 100%">
+        <p>
+          👋 ¡Hola, explorador! Hoy vamos a descubrir el increíble paisaje de
+          los Andes, también conocido como la Sierra. ¿Estás listo para aprender
+          y jugar? 🎒✨
+        </p>
+        <hr />
+        <p>1️⃣ ¿Cómo es el paisaje de los Andes?</p>
+        <p>
+          Los Andes son montañas muy altas con climas fríos y templados. En este
+          lugar podemos encontrar:
+        </p>
+        <ul style="list-style-type: none">
+          <li>>✅ Montañas nevadas 🏔️</li>
+          <li>>✅ Valles y colinas ⛰️</li>
+          <li>✅ Casas de adobe o piedra 🏡</li>
+          <li>✅ Lagos y ríos 🌊</li>
+        </ul>
+      </div>
+
+      <div class="alert alert-info" role="alert" style="max-width: 100%">
+        <p>2️⃣ Actividad: Encuentra los elementos del paisaje andino</p>
+        <p>
+          📌 Instrucciones: Mira las imágenes que te mostramos y selecciona solo
+          las que pertenecen al paisaje de los Andes.
+        </p>
+        <p>🎯 Ejemplo:</p>
+        <ul style="list-style-type: none">
+          <li>Si ves una Montaña 🏔️ márcala ✅.</li>
+          <li>
+            Si ves una palmera 🌴, no la marques ❌ (porque crece en la costa).
+          </li>
+        </ul>
+        <p>
+          💡 Consejo: Piensa en lugares altos y fríos, con montañas y animales
+          resistentes al frío.
+        </p>
+        <p>🎉 ¡Diviértete descubriendo el hermoso paisaje andino! 🌄💖</p>
+        <hr />
+        <button
+          *ngIf="!isTimerStarted"
+          class="btn btn-info"
+          data-bs-dismiss="offcanvas"
+          (click)="startTimer()"
+        >
+          <p>Comenzar</p>
+        </button>
+      </div>
     </div>
   </div>
-  <!-- Fin botón ayuda -->
+  <!-- Fin offCanvas Principal -->
 
-  <!-- Título y descripción -->
+  <!-- Inicio Modal Video -->
+  <div
+    class="modal fade"
+    id="videoModal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="videoModalLabel"
+    aria-hidden="true"
+    role="dialog"
+  >
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="videoModalLabel">Saber más</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Cerrar"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <iframe
+            id="videoPlayer"
+            width="100%"
+            height="400"
+            src="https://www.youtube.com/embed/MSdgdfOx_1U?si=KYt207UFrAi9qfKl&cc_load_policy=1&cc_lang_pref=es&autoplay=0"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fin Modal Video -->
+
+  <!-- Descripción -->
   <div class="text-center">
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-info" role="alert" tabindex="0">
       <p>
         SELECCIONA ELEMENTOS QUE REPRESENTAN EL PAISAJE DE LOS ANDES O SIERRA
       </p>
     </div>
   </div>
+  <!-- Fin Descripción -->
 
+  <!-- Área de juego -->
   <div class="d-flex justify-content-center">
     <div
       class="row row-cols-1 row-cols-md-3 g-4 text-center w-75 d-flex justify-content-center align-items-center"
@@ -223,13 +335,21 @@
       <div class="col">
         <div
           class="card h-100 bg-body-secondary"
-          (click)="!allCorrectSelected && handleCardClick(1, 'info')"
+          tabindex="0"
+          [class.disabled]="!isTimerStarted"
+          (click)="
+            isTimerStarted && !allCorrectSelected && handleCardClick(1, 'info')
+          "
+          (keydown)="onKeyPress($event, 1, 'info')"
+          [attr.aria-disabled]="!isTimerStarted"
+          role="button"
         >
           <div class="card-body">
             <img
-              src="../../../assets/montañoso.webp"
+              src="../../../assets/cotopaxi.jpg"
               class="card-img-top"
-              alt="Pista imagen"
+              draggable="false"
+              alt="Volcán Cotopaxi"
             />
             <div class="card-footer">
               <div
@@ -238,7 +358,9 @@
                 role="alert"
                 aria-live="polite"
               >
-                <h4 class="alert-heading d-flex align-items-center justify-content-center">
+                <h4
+                  class="alert-heading d-flex align-items-center justify-content-center"
+                >
                   <svg
                     class="bi flex-shrink-0 me-2 icon-alert"
                     role="img"
@@ -250,14 +372,34 @@
                   <p>¡Correcto!</p>
                 </h4>
                 <hr />
-                <p>Esto es una alerta informandote que tu respuesta es correcta</p>
+                <p>
+                  El volcán Cotopaxi es una montaña cubierta de nieve, y es uno
+                  de los volcanes mas famosos del mundo.
+                </p>
               </div>
               <div
                 *ngIf="alerts[1]?.type === 'warning'"
-                class="alert alert-warning mt-2"
+                class="alert alert-danger mt-2"
                 role="alert"
+                aria-live="polite"
               >
-                <p>Esto es una alerta de advertencia.</p>
+                <h4
+                  class="alert-heading d-flex align-items-center justify-content-center"
+                >
+                  <svg
+                    class="bi flex-shrink-0 me-2 icon-alert"
+                    role="img"
+                    aria-label="info:"
+                    aria-hidden="true"
+                  >
+                    <use xlink:href="#bi-exclamation-circle-fill" />
+                  </svg>
+                  <p>¡Incorrecto!</p>
+                </h4>
+                <hr />
+                <p>
+                  Recuerda lo que aprendimos sobre el agua en la naturaleza.
+                </p>
               </div>
             </div>
           </div>
@@ -267,27 +409,71 @@
       <div class="col">
         <div
           class="card h-100 bg-body-secondary"
-          (click)="!allCorrectSelected && handleCardClick(2, 'warning')"
+          tabindex="0"
+          [class.disabled]="!isTimerStarted"
+          (click)="
+            isTimerStarted &&
+              !allCorrectSelected &&
+              handleCardClick(2, 'warning')
+          "
+          (keydown)="onKeyPress($event, 2, 'warning')"
+          [attr.aria-disabled]="!isTimerStarted"
+          role="button"
         >
           <div class="card-body">
             <img
-              src="../../../assets/Llanuras.jpg"
+              src="../../../assets/bosque-oriente.jpg"
               class="card-img-top"
-              alt="..."
+              draggable="false"
+              alt="Paisaje típico de la Amazonía"
             />
             <div
               *ngIf="alerts[2]?.type === 'info'"
-              class="alert alert-info mt-2"
+              class="alert alert-success mt-2"
               role="alert"
+              aria-live="polite"
             >
-              <p>Esto es una alerta informativa.</p>
+              <h4
+                class="alert-heading d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  class="bi flex-shrink-0 me-2 icon-alert"
+                  role="img"
+                  aria-label="info:"
+                  aria-hidden="true"
+                >
+                  <use xlink:href="#check-circle-fill" />
+                </svg>
+                <p>¡Correcto!</p>
+              </h4>
+              <hr />
+              <p>
+                Un bosque de la Amazonía es una gran selva llena de árboles
+                enormes, ríos y muchos animales como monos, jaguares y loros de
+                colores.
+              </p>
             </div>
             <div
               *ngIf="alerts[2]?.type === 'warning'"
-              class="alert alert-warning mt-2"
+              class="alert alert-danger mt-2"
               role="alert"
+              aria-live="polite"
             >
-              <p>Esto es una alerta de advertencia.</p>
+              <h4
+                class="alert-heading d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  class="bi flex-shrink-0 me-2 icon-alert"
+                  role="img"
+                  aria-label="info:"
+                  aria-hidden="true"
+                >
+                  <use xlink:href="#bi-exclamation-circle-fill" />
+                </svg>
+                <p>¡Incorrecto!</p>
+              </h4>
+              <hr />
+              <p>Recuerda lo que aprendimos sobre el agua en la naturaleza.</p>
             </div>
           </div>
         </div>
@@ -296,27 +482,68 @@
       <div class="col">
         <div
           class="card h-100 bg-body-secondary"
-          (click)="!allCorrectSelected && handleCardClick(3, 'info')"
+          tabindex="0"
+          [class.disabled]="!isTimerStarted"
+          (click)="
+            isTimerStarted && !allCorrectSelected && handleCardClick(3, 'info')
+          "
+          (keydown)="onKeyPress($event, 3, 'info')"
+          [attr.aria-disabled]="!isTimerStarted"
+          role="button"
         >
           <div class="card-body">
             <img
               src="../../../assets/valles.jpg"
               class="card-img-top"
-              alt="..."
+              draggable="false"
+              alt="Valle del río Chota"
             />
             <div
               *ngIf="alerts[3]?.type === 'info'"
-              class="alert alert-info mt-2"
+              class="alert alert-success mt-2"
               role="alert"
+              aria-live="polite"
             >
-              <p>Esto es una alerta informativa.</p>
+              <h4
+                class="alert-heading d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  class="bi flex-shrink-0 me-2 icon-alert"
+                  role="img"
+                  aria-label="info:"
+                  aria-hidden="true"
+                >
+                  <use xlink:href="#check-circle-fill" />
+                </svg>
+                <p>¡Correcto!</p>
+              </h4>
+              <hr />
+              <p>
+                El Valle del Chota es un lugar bonito en Ecuador, lleno de
+                montañas, ríos y campos verdes.
+              </p>
             </div>
             <div
               *ngIf="alerts[3]?.type === 'warning'"
-              class="alert alert-warning mt-2"
+              class="alert alert-danger mt-2"
               role="alert"
+              aria-live="polite"
             >
-              <p>Esto es una alerta de advertencia.</p>
+              <h4
+                class="alert-heading d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  class="bi flex-shrink-0 me-2 icon-alert"
+                  role="img"
+                  aria-label="info:"
+                  aria-hidden="true"
+                >
+                  <use xlink:href="#bi-exclamation-circle-fill" />
+                </svg>
+                <p>¡Incorrecto!</p>
+              </h4>
+              <hr />
+              <p>Recuerda lo que aprendimos sobre el agua en la naturaleza.</p>
             </div>
           </div>
         </div>
@@ -325,27 +552,68 @@
       <div class="col">
         <div
           class="card h-100 bg-body-secondary"
-          (click)="!allCorrectSelected && handleCardClick(4, 'info')"
+          tabindex="0"
+          [class.disabled]="!isTimerStarted"
+          (click)="
+            isTimerStarted && !allCorrectSelected && handleCardClick(4, 'info')
+          "
+          (keydown)="onKeyPress($event, 4, 'info')"
+          [attr.aria-disabled]="!isTimerStarted"
+          role="button"
         >
           <div class="card-body">
             <img
               src="../../../assets/colinas.jpg"
               class="card-img-top"
-              alt="..."
+              draggable="false"
+              alt="Colina de El Panecillo"
             />
             <div
               *ngIf="alerts[4]?.type === 'info'"
-              class="alert alert-info mt-2"
+              class="alert alert-success mt-2"
               role="alert"
+              aria-live="polite"
             >
-              <p>Esto es una alerta informativa.</p>
+              <h4
+                class="alert-heading d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  class="bi flex-shrink-0 me-2 icon-alert"
+                  role="img"
+                  aria-label="info:"
+                  aria-hidden="true"
+                >
+                  <use xlink:href="#check-circle-fill" />
+                </svg>
+                <p>¡Correcto!</p>
+              </h4>
+              <hr />
+              <p>
+                La Colina de El Panecillo esta ubicada en el centro de Quito. En
+                su cima hay una estatua muy grande de la Virgen de Quito.
+              </p>
             </div>
             <div
               *ngIf="alerts[4]?.type === 'warning'"
-              class="alert alert-warning mt-2"
+              class="alert alert-danger mt-2"
               role="alert"
+              aria-live="polite"
             >
-              <p>Esto es una alerta de advertencia.</p>
+              <h4
+                class="alert-heading d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  class="bi flex-shrink-0 me-2 icon-alert"
+                  role="img"
+                  aria-label="info:"
+                  aria-hidden="true"
+                >
+                  <use xlink:href="#bi-exclamation-circle-fill" />
+                </svg>
+                <p>¡Incorrecto!</p>
+              </h4>
+              <hr />
+              <p>Recuerda lo que aprendimos sobre el agua en la naturaleza.</p>
             </div>
           </div>
         </div>
@@ -354,27 +622,71 @@
       <div class="col">
         <div
           class="card h-100 bg-body-secondary"
-          (click)="!allCorrectSelected && handleCardClick(5, 'warning')"
+          tabindex="0"
+          [class.disabled]="!isTimerStarted"
+          (click)="
+            isTimerStarted &&
+              !allCorrectSelected &&
+              handleCardClick(5, 'warning')
+          "
+          (keydown)="onKeyPress($event, 5, 'warning')"
+          [attr.aria-disabled]="!isTimerStarted"
+          role="button"
         >
           <div class="card-body">
             <img
-              src="../../../assets/cotopaxi.jpg"
+              src="../../../assets/atacames.webp"
               class="card-img-top"
-              alt="..."
+              draggable="false"
+              alt="Playa Atacames"
             />
             <div
               *ngIf="alerts[5]?.type === 'info'"
-              class="alert alert-info mt-2"
+              class="alert alert-success mt-2"
               role="alert"
             >
-              <p>Esto es una alerta informativa.</p>
+              <h4
+                class="alert-heading d-flex align-items-center justify-content-center"
+              >
+                <svg
+                  class="bi flex-shrink-0 me-2 icon-alert"
+                  role="img"
+                  aria-label="info:"
+                  aria-hidden="true"
+                >
+                  <use xlink:href="#check-circle-fill" />
+                </svg>
+                <p>¡Correcto!</p>
+              </h4>
+              <hr />
+              <p>
+                La playa de Atacames es una hermosa playa, donde el
+                mar es tranquilo y las olas no son muy grandes. Es un lugar
+                ideal para nadar, hacer castillos de arena y disfrutar del sol.
+              </p>
             </div>
             <div
               *ngIf="alerts[5]?.type === 'warning'"
-              class="alert alert-warning mt-2"
+              class="alert alert-danger mt-2"
               role="alert"
             >
-              <p>Esto es una alerta de advertencia.</p>
+            <h4
+            class="alert-heading d-flex align-items-center justify-content-center"
+          >
+            <svg
+              class="bi flex-shrink-0 me-2 icon-alert"
+              role="img"
+              aria-label="info:"
+              aria-hidden="true"
+            >
+              <use xlink:href="#bi-exclamation-circle-fill" />
+            </svg>
+            <p>¡Incorrecto!</p>
+          </h4>
+          <hr />
+          <p>
+            Recuerda lo que aprendimos sobre el agua en la naturaleza.
+          </p>
             </div>
           </div>
         </div>
@@ -391,7 +703,7 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal Success -->
   <div
     class="modal fade"
     id="completedModal"
@@ -429,8 +741,7 @@
       </div>
     </div>
   </div>
-
-  <!-- Imágenes para seleccionar -->
+  <!-- Fin Modal Success -->
 
   <!-- Encabezado:
 

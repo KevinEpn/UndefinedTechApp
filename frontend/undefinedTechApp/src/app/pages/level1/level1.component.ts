@@ -25,10 +25,10 @@ export class Level1Component implements OnInit, OnDestroy {
 
   private videoPlayer: HTMLIFrameElement | null = null;
   private modalElement: HTMLElement | null = null;
-  
-  
-  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
-  
+
+
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
+
 
   ngOnInit(): void {
     this.restartAll();
@@ -95,7 +95,7 @@ export class Level1Component implements OnInit, OnDestroy {
       if (this.droppedItems.size === 4) {
         this.stopTimer();
         this.showModalCompleted();
-        
+
       }
     } else if (draggedItem !== expectedItem) {
       this.showError(draggedItem || '', expectedItem);
@@ -105,13 +105,13 @@ export class Level1Component implements OnInit, OnDestroy {
   showError(draggedItem: string, expectedItem: string) {
     this.errorItem = draggedItem;
     if (draggedItem === 'Objeto 1' && expectedItem !== 'Objeto 1') {
-      this.errorMessage = 'Pista objeto 1';
+      this.errorMessage = 'Una cuenca hidrografica es un área donde el agua de la lluvia se recoge y fluye hacia un río, lago o mar. Es como un gran recipiente que recoge el agua y la lleva a un solo lugar.';
     } else if (draggedItem === 'Objeto 2' && expectedItem !== 'Objeto 2') {
-      this.errorMessage = 'Pista objeto 2';
+      this.errorMessage = 'Una laguna es un cuerpo de agua que es más pequeño que un lago. Está rodeada de tierra y a veces tiene agua dulce o salada.';
     } else if (draggedItem === 'Objeto 3' && expectedItem !== 'objeto 3') {
-      this.errorMessage = 'Pista objeto 3';
+      this.errorMessage = 'Un nevado es una montaña muy alta que siempre tiene nieve en su cima, incluso cuando hace calor en el resto del lugar. ';
     } else if (draggedItem === 'Objeto 4' && expectedItem !== 'objeto 4') {
-      this.errorMessage = 'Pista objeto 4';
+      this.errorMessage = 'El agua es un recurso que usamos todos los días para beber, bañarnos, regar las plantas y muchas otras cosas. Es muy importante porque sin agua no podríamos vivir';
     } else {
       this.errorMessage = 'Este objeto no pertenece aquí.';
     }
@@ -202,8 +202,8 @@ export class Level1Component implements OnInit, OnDestroy {
     this.stopTimer()
 
     if (typeof document !== 'undefined') {
-      this.showOffCanvas();    
-      this.ngAfterViewInit(); 
-    } 
+      this.showOffCanvas();
+      this.ngAfterViewInit();
+    }
   }
 }
