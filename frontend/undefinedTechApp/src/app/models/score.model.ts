@@ -3,7 +3,7 @@ export interface IScores {
     _id:   string;
     name:  string;
     date:  Date;
-    time:  number;
+    formattedTime:  string;
     score: number;
     __v:   number;
 }

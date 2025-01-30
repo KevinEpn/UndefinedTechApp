@@ -84,3 +84,15 @@ p {
     position: relative; /* Establece un contexto para sus hijos */
     z-index: 1; /* Evita quedar bajo el overlay */
   }
+
+  .card {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .card:focus {
+    outline: 2px solid #007bff;
+  }
+  

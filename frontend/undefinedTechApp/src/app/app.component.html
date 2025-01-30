@@ -80,6 +80,20 @@
         <li class="nav-item">
           <a
             class="nav-link"
+            routerLink="final-form"
+            *ngIf="showButton()"
+            [ngClass]="{ active: menuOption == 'final-form' }"
+            [attr.aria-selected]="
+              menuOption === 'final-form' ? 'true' : 'false'
+            "
+            role="menuitem"
+            (click)="onOption('final-form')"
+            >Guardar Resultados</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
             routerLink="scoretable"
             [ngClass]="{ active: menuOption == 'scoretable' }"
             [attr.aria-selected]="

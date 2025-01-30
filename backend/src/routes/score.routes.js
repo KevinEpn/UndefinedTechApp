@@ -40,8 +40,8 @@ router.get('/', async (req, res) => {
 
 //NEW SCORE
 router.post('/', async (req, res) => {
-    const {name, date, time, score} = req?.body;
-    if (!name || !date || !time || !score) {
+    const {name, date, formattedTime, score} = req?.body;
+    if (!name || !date || !formattedTime || !score) {
         return res.status(400).json({ message: 'Please fill all fields' })   
     }
 
@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
         {
             name, 
             date, 
-            time, 
+            formattedTime, 
             score
         }
     )
@@ -74,7 +74,7 @@ router.put('/:id', getScore, async (req, res) => {
         const score = res.score;
         score.name = req.body.name || score.name;
         score.date = req.body.date || score.date;
-        score.time = req.body.time || score.time;
+        score.formattedTime = req.body.formattedTime || score.formattedTime;
         score.score = req.body.score || score.score;
 
         const updatedScore = await score.save();
@@ -94,7 +94,7 @@ router.patch('/:id', getScore, async (req, res) => {
         const score = res.score;
         score.name = req.body.name || score.name;
         score.date = req.body.date || score.date;
-        score.time = req.body.time || score.time;
+        score.formattedTime = req.body.formattedTime || score.formattedTime;
         score.score = req.body.score || score.score;
 
         const updatedScore = await score.save();

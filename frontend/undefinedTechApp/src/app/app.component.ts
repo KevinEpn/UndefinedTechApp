@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { StorageService } from './services/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'undefinedTechApp';
 
   fontSize: number = 16; //tamaño inicial de fuente
@@ -18,6 +19,17 @@ export class AppComponent {
   fontSizeMax = 30;
 
   menuOption: string = '';
+  inNav: boolean = false;
+
+  constructor(private storageService: StorageService, private router: Router) {}
+
+  ngOnInit() {
+    this.storageService.getAllCompletedObservable().subscribe((completed) => {
+      if (completed) {
+        this.router.navigate(['/final-form']);
+      }
+    });
+  }
 
   onOption(menuOption: string) {
     this.menuOption = menuOption;
@@ -25,5 +37,18 @@ export class AppComponent {
 
   applyGlobalFontSize() {
     document.documentElement.style.setProperty('--global-font-size', `${this.fontSize}px`);
+  } 
+
+  showButton(): boolean {
+    if (this.storageService.isAllCompleted()) {
+      this.inNav = true;
+    }
+    return this.inNav;
   }
+
+  public cleanNav() { // Ensure cleanNav is public
+    this.inNav = false;
+    console.log('cleanNav called');
+  }
+
 }

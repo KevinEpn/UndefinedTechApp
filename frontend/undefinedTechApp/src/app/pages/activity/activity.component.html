@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Actividad {{ activityId }}</h5>
+      
+      <p *ngIf="completed">¡Completado!</p>
+      
+      <div *ngIf="!completed">
+        <button class="btn btn-primary" (click)="completeActivity(100, 300)">Completar</button>
+      </div>
+  
+      <div *ngIf="completed">
+        <p>Puntuación: {{ score }}</p>
+        <p>Tiempo: {{ time }} segundos</p>
+        <button class="btn btn-danger" (click)="resetActivity()">Reiniciar</button>
+      </div>
+    </div>
+  </div>

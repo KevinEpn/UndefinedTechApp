@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { StorageService } from '../../services/storage.service';
 
 declare var bootstrap: any;
 
@@ -10,9 +11,12 @@ declare var bootstrap: any;
   styleUrl: './level1.component.css'
 })
 export class Level1Component implements OnInit, OnDestroy {
+  activityId: string = 'actividad1';
+
   elapsedTime: number = 0;
   formattedTime = '00:00:00';
   timer: any;
+  time:number = 0;
   isTimerStarted = false;
 
   droppedItems = new Set<string>();
@@ -20,28 +24,44 @@ export class Level1Component implements OnInit, OnDestroy {
   errorMessage: string | null = null;
   errorItem: string | null = null;
 
-  puntuacion: number | null = null;
+  score: number = 0;
   completedMessage: string | null = null;
+  completed: boolean = false;
+  saved: boolean = false;
 
   private videoPlayer: HTMLIFrameElement | null = null;
   private modalElement: HTMLElement | null = null;
 
-
-  constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
+  constructor(private renderer: Renderer2, private elementRef: ElementRef, private storageService: StorageService) { }
 
 
   ngOnInit(): void {
-    this.restartAll();
+    // this.restartAll();
+
+    const state = this.storageService.getActivityState()[this.activityId];
+    if (state) {
+      this.score = state.score;
+      this.time = state.time;
+      this.formattedTime = state.formattedTime;
+      this.completed = state.completed;
+      this.saved = state.saved;
+    }
+    console.log(this.completed)
+
+    this.showOffCanvas();
   }
 
   ngOnDestroy(): void {
-    this.stopTimer();
+    
   }
 
   showOffCanvas() {
     const offCanvasElement = document.getElementById('offcanvasScrolling');
     const offCanvas = new bootstrap.Offcanvas(offCanvasElement);
-    offCanvas.show();
+    console.log(this.saved)
+    if (!this.saved) {
+      offCanvas.show();      
+    }
   }
 
   toggleOffCanvas() {
@@ -60,7 +80,7 @@ export class Level1Component implements OnInit, OnDestroy {
 
   stopTimer() {
     if (this.timer) {
-      clearInterval(this.timer);
+      clearInterval(this.timer); 
     }
   }
 
@@ -125,23 +145,25 @@ export class Level1Component implements OnInit, OnDestroy {
   }
 
   showModalCompleted(): void {
+    this.completed = true;
+    // this.completeActivity()
     // Calcular puntuación antes de mostrar el modal
     const tiempoEnMinutos = this.elapsedTime / 60000; // Convertir ms a minutos
 
-    if (tiempoEnMinutos <= 5) {
-      this.puntuacion = 10;
+    if (tiempoEnMinutos <= 3) {
+      this.score = 10;
+    } else if (tiempoEnMinutos <= 4) {
+      this.score = 9;
+    } else if (tiempoEnMinutos <= 5) {
+      this.score = 8;
     } else if (tiempoEnMinutos <= 6) {
-      this.puntuacion = 9;
+      this.score = 7;
     } else if (tiempoEnMinutos <= 7) {
-      this.puntuacion = 8;
+      this.score = 6;
     } else if (tiempoEnMinutos <= 8) {
-      this.puntuacion = 7;
-    } else if (tiempoEnMinutos <= 9) {
-      this.puntuacion = 6;
-    } else if (tiempoEnMinutos <= 10) {
-      this.puntuacion = 5;
+      this.score = 5;
     } else {
-      this.puntuacion = 4;
+      this.score = 4;
     }
 
     const modalElement = document.getElementById('completedModal');
@@ -189,17 +211,27 @@ export class Level1Component implements OnInit, OnDestroy {
     }
   }
 
+  completeActivity() {    
+    this.saved = true;
+    this.storageService.setActivityState(this.activityId, { completed: this.completed, saved: this.saved, score: this.score, time: this.elapsedTime, formattedTime: this.formattedTime });
+  }
+
   restartAll() {
     // Reiniciar el contador de tiempo
     this.elapsedTime = 0;
     this.isTimerStarted = false;
     this.droppedItems = new Set<string>();
+    this.formattedTime = '00:00:00';
 
     // Restablecer cualquier otra variable de estado si es necesario
     // Por ejemplo, si tienes un contador o alguna lógica de validación:
     this.errorMessage = '';
 
     this.stopTimer()
+
+    this.storageService.resetPage(this.activityId);
+    this.completed=false;
+    this.saved=false;
 
     if (typeof document !== 'undefined') {
       this.showOffCanvas();

@@ -4,6 +4,8 @@ import { Level1Component } from './pages/level1/level1.component';
 import { Level2Component } from './pages/level2/level2.component';
 import { Level3Component } from './pages/level3/level3.component';
 import { ScoreTableComponent } from './pages/score-table/score-table.component';
+import { ActivityComponent } from './pages/activity/activity.component';
+import { FinalFormComponent } from './pages/final-form/final-form.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -12,5 +14,7 @@ export const routes: Routes = [
     {path: 'level2', component: Level2Component},
     {path: 'level3', component: Level3Component},
     {path: 'scoretable', component: ScoreTableComponent},
+    {path: 'activity', component: ActivityComponent},
+    {path: 'final-form', component: FinalFormComponent},
     {path: '**', redirectTo: '', pathMatch: 'full'}
 ];

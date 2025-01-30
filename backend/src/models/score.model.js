@@ -4,7 +4,7 @@ const scoreSchema = new mongoose.Schema(
     {
         name: String,
         date: Date,
-        time: Number,
+        formattedTime: String,
         score: Number
     }
 )

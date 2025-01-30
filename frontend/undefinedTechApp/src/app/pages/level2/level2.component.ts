@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { StorageService } from '../../services/storage.service';
 
 
 declare var bootstrap: any;
@@ -11,9 +12,12 @@ declare var bootstrap: any;
   styleUrl: './level2.component.css'
 })
 export class Level2Component implements OnInit, OnDestroy {
+  activityId: string = 'actividad2';
+
   elapsedTime: number = 0;
   formattedTime = '00:00:00';
   timer: any;
+  time: number = 0;
   isTimerStarted = false;
 
   errorMessage: string | null = null;
@@ -26,27 +30,43 @@ export class Level2Component implements OnInit, OnDestroy {
   correctCards = new Set<number>();
   allCorrectSelected = false;
 
-  puntuacion: number | null = null;
+  score: number = 0;
   completedMessage: string | null = null;
+  completed: boolean = false;
+  saved: boolean = false;
 
   private videoPlayer: HTMLIFrameElement | null = null;
   private modalElement: HTMLElement | null = null;
-  
 
-  constructor(private renderer: Renderer2, private elementRef: ElementRef) { }
+  constructor(private renderer: Renderer2, private elementRef: ElementRef, private storageService: StorageService) { }
 
   ngOnInit(): void {
-    this.restartAll();
+    // this.restartAll();
+
+    const state = this.storageService.getActivityState()[this.activityId];
+    if (state) {
+      this.score = state.score;
+      this.time = state.time;
+      this.formattedTime = state.formattedTime;
+      this.completed = state.completed;
+      this.saved = state.saved;
+    }
+    console.log(this.completed)
+
+    this.showOffCanvas();
   }
 
   ngOnDestroy(): void {
-    this.stopTimer();
+    // this.stopTimer();
   }
 
   showOffCanvas() {
     const offCanvasElement = document.getElementById('offcanvasScrolling');
     const offCanvas = new bootstrap.Offcanvas(offCanvasElement);
-    offCanvas.show();
+    if (!this.saved) {
+      offCanvas.show();
+      
+    }
   }
 
   toggleOffCanvas() {
@@ -108,23 +128,24 @@ export class Level2Component implements OnInit, OnDestroy {
   }
 
   showModalCompleted(): void {
+    this.completed = true;
     // Calcular puntuación antes de mostrar el modal
     const tiempoEnMinutos = this.elapsedTime / 60000; // Convertir ms a minutos
 
-    if (tiempoEnMinutos <= 5) {
-      this.puntuacion = 10;
+    if (tiempoEnMinutos <= 3) {
+      this.score = 10;
+    } else if (tiempoEnMinutos <= 4) {
+      this.score = 9;
+    } else if (tiempoEnMinutos <= 5) {
+      this.score = 8;
     } else if (tiempoEnMinutos <= 6) {
-      this.puntuacion = 9;
+      this.score = 7;
     } else if (tiempoEnMinutos <= 7) {
-      this.puntuacion = 8;
+      this.score = 6;
     } else if (tiempoEnMinutos <= 8) {
-      this.puntuacion = 7;
-    } else if (tiempoEnMinutos <= 9) {
-      this.puntuacion = 6;
-    } else if (tiempoEnMinutos <= 10) {
-      this.puntuacion = 5;
+      this.score = 5;
     } else {
-      this.puntuacion = 4;
+      this.score = 4;
     }
 
     const modalElement = document.getElementById('completedModal');
@@ -174,17 +195,23 @@ export class Level2Component implements OnInit, OnDestroy {
 
   onKeyPress(event: KeyboardEvent, id: number, type: string): void {
     if (!this.isTimerStarted || this.allCorrectSelected) return; // No hacer nada si está deshabilitado
-    
+
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault(); // Evita el desplazamiento en la página con la tecla Espacio
       this.handleCardClick(id, type as 'info' | 'warning');
     }
   }
 
+  completeActivity() {
+    this.saved = true;
+    this.storageService.setActivityState(this.activityId, { completed: this.completed, saved: this.saved, score: this.score, time: this.elapsedTime, formattedTime: this.formattedTime });
+  }
+
   restartAll() {
     // Reiniciar el contador de tiempo
     this.elapsedTime = 0;
     this.isTimerStarted = false;
+    this.formattedTime = '00:00:00';
 
     this.alerts = {};
     this.correctCards.clear();
@@ -193,6 +220,10 @@ export class Level2Component implements OnInit, OnDestroy {
     // Restablecer cualquier otra variable de estado si es necesario
     // Por ejemplo, si tienes un contador o alguna lógica de validación:
     this.errorMessage = '';
+
+    this.storageService.resetPage(this.activityId);
+    this.completed = false;
+    this.saved = false;
 
     this.stopTimer()
 
