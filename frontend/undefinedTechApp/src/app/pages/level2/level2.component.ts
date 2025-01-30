@@ -130,7 +130,7 @@ export class Level2Component implements OnInit, OnDestroy {
   showModalCompleted(): void {
     this.completed = true;
     // Calcular puntuación antes de mostrar el modal
-    const tiempoEnMinutos = this.elapsedTime / 60000; // Convertir ms a minutos
+    const tiempoEnMinutos = this.elapsedTime / 60; // Convertir ms a minutos
 
     if (tiempoEnMinutos <= 3) {
       this.score = 10;
