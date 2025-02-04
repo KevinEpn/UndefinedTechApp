@@ -9,7 +9,7 @@ import { IScores } from '../models/score.model';
 export class ScoresService {
 
   private _http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/scores';
+  private apiUrl = 'https://undefinedtechapp-production.up.railway.app/scores';
 
   constructor(private http: HttpClient) {}
 

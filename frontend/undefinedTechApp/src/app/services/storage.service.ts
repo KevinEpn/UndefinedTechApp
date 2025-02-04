@@ -16,7 +16,7 @@ interface ActivityState {
 export class StorageService {
   private key = 'activityState';
   private allCompleted$ = new BehaviorSubject<boolean>(false);
-  private apiUrl = 'http://localhost:3000/scores'; // This is the URL of the API endpoint
+  private apiUrl = 'https://undefinedtechapp-production.up.railway.app/scores'; // This is the URL of the API endpoint
 
   constructor(private http: HttpClient) {
     if (this.isLocalStorageAvailable()) {
