@@ -24,7 +24,7 @@ app.use(cors({
 
 // Conexión de la BD
 // connectDB();
-mongoose.connect(process.env.MONGO_URL, { dbName: process.env.MONGO_DB_NAME })
+// mongoose.connect(process.env.MONGO_URL, { dbName: process.env.MONGO_DB_NAME })
 const db = mongoose.connection;
 
 app.use('/scores', scoreRoutes);
