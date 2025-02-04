@@ -15,11 +15,11 @@ const app = express();
 app.use(bodyParser.json());
 
 // Habilitar CORS
-// app.use(cors({
-//     origin: 'http://localhost:4200', // Permitir solicitudes desde este dominio
-//     methods: ['GET','POST','PUT','DELETE'], // Métodos que se permiten
-//     allowedHeaders: ['Content-Type', 'Authorization'] // Cabeceras permitidas
-// }));
+app.use(cors({
+    origin: 'http://localhost:4200', // Permitir solicitudes desde este dominio
+    methods: ['GET','POST','PUT','DELETE'], // Métodos que se permiten
+    allowedHeaders: ['Content-Type', 'Authorization'] // Cabeceras permitidas
+}));
 
 
 // Conexión de la BD
