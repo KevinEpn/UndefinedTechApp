@@ -23,7 +23,7 @@ app.use(cors({
 
 
 // Conexión de la BD
-// connectDB();
+connectDB();
 // mongoose.connect(process.env.MONGO_URL, { dbName: process.env.MONGO_DB_NAME })
 const db = mongoose.connection;
 
