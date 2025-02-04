@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 // Habilitar CORS
 app.use(cors({
-    origin: 'http://localhost:4200', // Permitir solicitudes desde este dominio
+    origin: 'https://undefined-tech-app.netlify.app', // Permitir solicitudes desde este dominio
     methods: ['GET','POST','PUT','DELETE'], // Métodos que se permiten
     allowedHeaders: ['Content-Type', 'Authorization'] // Cabeceras permitidas
 }));
