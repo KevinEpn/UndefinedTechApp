@@ -1,0 +1,12 @@
+{
+  "routes": {
+    "/UndefinedTechApp": {},
+    "/UndefinedTechApp/activity": {},
+    "/UndefinedTechApp/final-form": {},
+    "/UndefinedTechApp/home": {},
+    "/UndefinedTechApp/level1": {},
+    "/UndefinedTechApp/level2": {},
+    "/UndefinedTechApp/level3": {},
+    "/UndefinedTechApp/scoretable": {}
+  }
+}
