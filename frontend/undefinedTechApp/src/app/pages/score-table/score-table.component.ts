@@ -20,7 +20,6 @@ export class ScoreTableComponent implements OnInit {
   
  
   ngOnInit(): void {
-    this
     this.chargeScores();
   }
 
