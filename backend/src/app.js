@@ -11,26 +11,21 @@ config()
 const scoreRoutes = require('./routes/score.routes');
 
 const allowedOrigins = [
-    'https://undefined-tech-app.netlify.app',
+    'http://localhost:4200',
     'https://undefinedtechapp-production.up.railway.app'
 ];
+
 
 // Express para los middlewares
 const app = express();
 app.use(bodyParser.json());
 
-// // Habilitar CORS
-// app.use(cors({
-//     origin: (origin, callback) => {
-//         if (!origin || allowedOrigins.includes(origin)) {
-//             callback(null, true); // Permitir acceso
-//         } else {
-//             callback(new Error('No permitido por CORS'));
-//         }
-//     },
-//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//     allowedHeaders: ['Content-Type', 'Authorization']
-// }));
+// Habilitar CORS
+app.use(cors({
+    origin: '*', // Permitir solicitudes desde este dominio
+    methods: ['GET','POST','PUT','DELETE'], // Métodos que se permiten
+    allowedHeaders: ['Content-Type', 'Authorization'] // Cabeceras permitidas
+}));
 
 
 // Conexión de la BD

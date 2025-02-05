@@ -18,12 +18,20 @@ export class ScoreTableComponent implements OnInit {
   private _apiService = inject(ScoresService);
  
   ngOnInit(): void {
+    this.chargeScores();
+  }
+
+  chargeScores() {
     this._apiService.getScores().subscribe((data: IScores[]) => {
-      console.log(data);
+      console.log('Cargando datos', data);
       this.scoreList = data;      
       this.results = data;
-    });
-  }
+    },
+    error => {
+      console.log('Error al cargar los datos', error);
+    }
+  );
+  }  
 
   sortByScore() {
     this.sortScoreAscending = !this.sortScoreAscending;
