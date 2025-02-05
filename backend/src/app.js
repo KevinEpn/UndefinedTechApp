@@ -12,7 +12,7 @@ const scoreRoutes = require('./routes/score.routes');
 
 const allowedOrigins = [
     'https://undefined-tech-app.netlify.app',
-    ' https://undefinedtechapp-production.up.railway.app',
+    'https://undefinedtechapp-production.up.railway.app',
     'http://localhost:4200'
 ];
 
