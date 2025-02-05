@@ -1,19 +1,19 @@
 <div class="container mt-4">
-    <h2>Formulario Final</h2>
+    <h2 tabindex="0">Formulario Final</h2>
     
     <form (ngSubmit)="submit()">
       <div class="mb-3">
-        <label for="name" class="form-label">Nombre</label>
+        <label for="name" class="form-label" tabindex="0">Nombre</label>
         <input type="text" id="name" class="form-control" [(ngModel)]="name" name="name" required>
       </div>
   
       <div class="mb-3">
-        <label class="form-label">Fecha</label>
+        <label class="form-label" tabindex="0">Fecha</label>
         <input type="text" class="form-control" [value]="date | date:'yyyy-MM-dd'" readonly>
       </div>
   
       <div class="mb-3">
-        <label class="form-label">Puntuación</label>
+        <label class="form-label" tabindex="0">Puntuación</label>
         <input type="number" class="form-control" [value]="score" readonly>
       </div>
   
@@ -23,7 +23,7 @@
       </div> -->
 
       <div class="mb-3">
-        <label class="form-label">Tiempo en Formato hh:mm:ss</label>
+        <label class="form-label" tabindex="0">Tiempo en Formato hh:mm:ss</label>
         <input type="text" class="form-control" [value]="formattedTime">
       </div>
   

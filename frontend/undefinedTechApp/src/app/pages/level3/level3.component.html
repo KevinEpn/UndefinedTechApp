@@ -82,7 +82,7 @@
 
   <!-- Temporizador -->
   <div class="d-flex justify-content-center align-items-center">
-    <div class="alert alert-warning d-flex align-items-center" role="alert">
+    <div class="alert alert-warning d-flex align-items-center" tabindex="0">
       <svg
         class="bi flex-shrink-0 me-2 icon-alert"
         role="img"
@@ -102,7 +102,7 @@
 
   <!-- Inicio Titulo - Botones Ayuda y Reinciar -->
   <div class="d-flex justify-content-center align-items-center">
-    <h1 class="me-5">3 - 🌞 Descubriendo las Regiones del Ecuador 🌞</h1>
+    <h1 class="me-5"[tabIndex]="0">3 - 🌞 Descubriendo las Regiones del Ecuador 🌞</h1>
     <button
       *ngIf="!isTimerStarted"
       class="btn btn-info d-flex align-items-center me-5"
@@ -220,7 +220,7 @@
     aria-labelledby="offcanvasScrollingLabel"
   >
     <div class="offcanvas-header text-center justify-content-center">
-      <h2 class="offcanvas-title" id="offcanvasScrollingLabel">
+      <h2 class="offcanvas-title" id="offcanvasScrollingLabel" tabindex="0">
         🌞 Descubriendo las Regiones del Ecuador 🌞
       </h2>
       <button
@@ -258,7 +258,7 @@
         </div>
       </div>
 
-      <div class="alert alert-warning" role="alert" style="max-width: 100%">
+      <div class="alert alert-warning" role="alert" style="max-width: 100%" tabindex="0">
         <p>
           👋 ¡Hola, aventurero! Hoy vamos a aprender sobre las regiones de
           Ecuador. Ecuador tiene 4 grandes regiones: Costa, Sierra, Amazonía y
@@ -295,7 +295,7 @@
         </ul>
       </div>
 
-      <div class="alert alert-info" role="alert" style="max-width: 100%">
+      <div class="alert alert-info" role="alert" style="max-width: 100%" tabindex="0">
         <p>3️⃣ Actividad: Selecciona dos provincias de la Costa Ecuatoriana</p>
         <p>
           📌 Instrucciones: En esta actividad, te mostraremos imágenes de

@@ -1,17 +1,17 @@
 <div class="container text-center">
-  <h1 class="text-center">TABLA DE RESULTADOS</h1>
+  <h1 class="text-center" tabindex="0">TABLA DE RESULTADOS</h1>
 
   <div class="card">
     <div class="card-body justify-content-center">
       <table
-        class="table table-responsive table-striped table-bordered text-center"
+        class="table table-responsive table-striped table-bordered text-center" tabindex="0"
       >
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Tiempo Total</th>
+            <th scope="col" tabindex="0">#</th>
+            <th scope="col" tabindex="0">Nombre</th>
+            <th scope="col" tabindex="0">Fecha</th>
+            <th scope="col" tabindex="0">Tiempo Total</th>
             <th scope="col">
               <button type="button" class="btn" (click)="sortByScore()">
                 <p>
@@ -25,11 +25,11 @@
         <tbody>
           @for (score of scoreList; track $index) {
           <tr>
-            <th scope="row">{{ $index + 1 }}</th>
-            <td>{{ score.name }}</td>
-            <td>{{ score.date | date : "dd/MM/yyyy" }}</td>
-            <td>{{ score.formattedTime }}</td>
-            <td>{{ score.score }}</td>
+            <th scope="row" tabindex="0">{{ $index + 1 }}</th>
+            <td tabindex="0">{{ score.name }}</td>
+            <td tabindex="0">{{ score.date | date : "dd/MM/yyyy" }}</td>
+            <td tabindex="0">{{ score.formattedTime }}</td>
+            <td tabindex="0">{{ score.score }}</td>
           </tr>
           }
         </tbody>

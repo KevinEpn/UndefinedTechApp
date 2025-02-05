@@ -14,7 +14,6 @@ export const routes: Routes = [
     {path: 'level2', component: Level2Component},
     {path: 'level3', component: Level3Component},
     {path: 'scoretable', component: ScoreTableComponent},
-    {path: 'activity', component: ActivityComponent},
     {path: 'final-form', component: FinalFormComponent},
     {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
