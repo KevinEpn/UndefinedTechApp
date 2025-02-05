@@ -10,13 +10,19 @@ config()
 
 const scoreRoutes = require('./routes/score.routes');
 
+const allowedOrigins = [
+    'https://undefined-tech-app.netlify.app',
+    ' https://undefinedtechapp-production.up.railway.app',
+    'http://localhost:4200'
+];
+
 // Express para los middlewares
 const app = express();
 app.use(bodyParser.json());
 
 // Habilitar CORS
 app.use(cors({
-    origin: 'https://undefined-tech-app.netlify.app', // Permitir solicitudes desde este dominio
+    origin: allowedOrigins, // Permitir solicitudes desde este dominio
     methods: ['GET','POST','PUT','DELETE'], // Métodos que se permiten
     allowedHeaders: ['Content-Type', 'Authorization'] // Cabeceras permitidas
 }));
