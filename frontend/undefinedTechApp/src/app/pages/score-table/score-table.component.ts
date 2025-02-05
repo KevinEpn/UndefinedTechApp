@@ -16,8 +16,11 @@ export class ScoreTableComponent implements OnInit {
   results: IScores[] = [];
 
   private _apiService = inject(ScoresService);
+  
+  
  
   ngOnInit(): void {
+    this
     this.chargeScores();
   }
 

@@ -15,12 +15,14 @@ export class ScoresService {
 
   // Get all scores
   getScores():Observable<IScores[]> {
-    return this.http.get<IScores[]>(this.apiUrl);
+    return this.http.get<IScores[]>(this.apiUrl, { withCredentials: true });
   }
 
   // Get score by id
   getScore(id: number): Observable<IScores> {
     return this.http.get<IScores>(`${this.apiUrl}/${id}`);
   }
+
+  
   
 }
