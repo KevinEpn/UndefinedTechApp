@@ -15,7 +15,7 @@ export class ScoresService {
 
   // Get all scores
   getScores():Observable<IScores[]> {
-    return this.http.get<IScores[]>(this.apiUrl, { withCredentials: true });
+    return this.http.get<IScores[]>(this.apiUrl);
   }
 
   // Get score by id
